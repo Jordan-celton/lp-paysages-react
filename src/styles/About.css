@@ -1,0 +1,152 @@
+/* Réinitialisation de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Section principale */
+#a-propos {
+    padding: 50px 20px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+#a-propos h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Conteneur flex pour le texte et le bouton */
+.a-propos-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Texte descriptif */
+.a-propos-texte {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Bouton demande de devis */
+.devis {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.devis:hover {
+    background-color: #45a049;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    text-align: left;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Bouton de fermeture */
+.close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    float: right;
+    color: #333;
+}
+
+.close:hover {
+    color: red;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablette */
+@media (min-width: 768px) {
+    .a-propos-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .a-propos-texte {
+        max-width: 600px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .a-propos-texte {
+        max-width: 800px;
+    }
+
+    .modal-content {
+        width: 400px;
+    }
+}

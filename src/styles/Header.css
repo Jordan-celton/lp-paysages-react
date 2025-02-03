@@ -1,0 +1,122 @@
+body {
+    overflow-x: hidden;
+    /* Désactive le scroll horizontal */
+    margin: 0;
+    /* Supprime les marges par défaut */
+    padding: 0;
+    width: 100vw;
+}
+
+/* Styles généraux du header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Supprimer la position fixe */
+.logo {
+    max-width: 120px;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Navigation */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.nav-links a:hover {
+    color: #4CAF50;
+}
+
+/* Burger menu */
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+    .burger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        /* Le menu s'affiche sous le header */
+        left: 0;
+        right: 0;
+        background-color: rgba(51, 51, 51, 0.95);
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-100%);
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+        display: flex;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+    }
+
+    /* Animation du menu burger */
+    .burger .line1.toggle {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .burger .line2.toggle {
+        opacity: 0;
+    }
+
+    .burger .line3.toggle {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
