@@ -10,9 +10,10 @@ body {
 
 html,
 body {
-  height: 100%;
-  /* Assure que le corps prend toute la hauteur de la page */
+  overflow-x: hidden;
+  width: 100%;
   margin: 0;
+  padding: 0;
 }
 
 main {

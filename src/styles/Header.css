@@ -1,35 +1,41 @@
-body {
-    overflow-x: hidden;
-    /* Désactive le scroll horizontal */
-    margin: 0;
-    /* Supprime les marges par défaut */
-    padding: 0;
-    width: 100vw;
-}
-
 /* Styles généraux du header */
 header {
     background-color: #333;
     color: white;
-    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    z-index: 1000;
+    padding: 10px 5%;
+    height: 70px;
 }
 
-/* Supprimer la position fixe */
+/* Logotype */
 .logo {
-    max-width: 120px;
-    height: auto;
-    border-radius: 50%;
+    max-height: 60px;
+    /* Limite la hauteur du logo */
+    max-width: 100px;
+    /* Ajuste la largeur */
+    object-fit: contain;
+    /* Évite l'écrasement */
 }
 
 /* Navigation */
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 20px;
+    /* Réduction de l'espace entre les liens */
+    align-items: center;
 }
 
 .nav-links li {
@@ -39,7 +45,8 @@ header {
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    /* Légère réduction */
     display: flex;
     align-items: center;
     gap: 8px;
@@ -62,7 +69,7 @@ header {
 .burger div {
     width: 30px;
     height: 3px;
-    background-color: white;
+    background-color: bisque;
     border-radius: 5px;
     transition: all 0.3s ease;
 }
@@ -71,15 +78,17 @@ header {
 @media (max-width: 1024px) {
     .burger {
         display: flex;
+        position: relative;
+        z-index: 2000;
     }
 
     .nav-links {
-        position: absolute;
-        top: 100%;
-        /* Le menu s'affiche sous le header */
+        position: fixed;
+        top: 0;
         left: 0;
         right: 0;
         background-color: rgba(51, 51, 51, 0.95);
+        backdrop-filter: blur(8px);
         height: 100vh;
         flex-direction: column;
         justify-content: center;
@@ -94,29 +103,28 @@ header {
         transform: translateY(0);
         opacity: 1;
         pointer-events: auto;
-        display: flex;
     }
 
     .nav-links ul {
+        display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 25px;
         text-align: center;
     }
 
     .nav-links a {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 60px;
+        /* Réduit encore un peu la hauteur */
     }
 
-    /* Animation du menu burger */
-    .burger .line1.toggle {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .burger .line2.toggle {
-        opacity: 0;
-    }
-
-    .burger .line3.toggle {
-        transform: rotate(-45deg) translate(5px, -5px);
+    .logo {
+        max-width: 80px;
+        /* Taille plus petite pour mobile */
     }
 }

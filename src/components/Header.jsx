@@ -46,7 +46,15 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="burger" onClick={toggleMenu}>
+      <div
+        className="burger"
+        onClick={toggleMenu}
+        onKeyPress={(e) => e.key === "Enter" && toggleMenu()}
+        role="button"
+        aria-label="Menu"
+        tabIndex="0"
+        aria-expanded={menuOpen}
+      >
         <div className={`line1 ${menuOpen ? "toggle" : ""}`}></div>
         <div className={`line2 ${menuOpen ? "toggle" : ""}`}></div>
         <div className={`line3 ${menuOpen ? "toggle" : ""}`}></div>
