@@ -1,10 +1,8 @@
-import { useState } from "react";
+import PropTypes from "prop-types";
 import "aos/dist/aos.css";
 import "../styles/About.css";
 
-const About = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
+const About = ({ setModalOpen }) => {
   return (
     <section id="a-propos" data-aos="fade-up">
       <h2>À Propos</h2>
@@ -27,33 +25,12 @@ const About = () => {
         <button className="devis" onClick={() => setModalOpen(true)}>
           Demande de devis
         </button>
-
-        {/* Modale */}
-        {modalOpen && (
-          <div className="modal">
-            <div className="modal-content">
-              <span className="close" onClick={() => setModalOpen(false)}>
-                &times;
-              </span>
-              <h2>Demande de devis</h2>
-              <form action="send_devis.php" method="post">
-                <label htmlFor="nom">Nom:</label>
-                <input type="text" id="nom" name="nom" required />
-
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" required />
-
-                <label htmlFor="details">Détails:</label>
-                <textarea id="details" name="details" required></textarea>
-
-                <button type="submit">Envoyer la demande de devis</button>
-              </form>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
+};
+About.propTypes = {
+  setModalOpen: PropTypes.func.isRequired,
 };
 
 export default About;

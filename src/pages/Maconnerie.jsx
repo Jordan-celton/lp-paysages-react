@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import HeaderPages from "../components/HeaderPages";
 import ImageModal from "../components/ImageModal";
 import "../styles/Maconnerie.css"; // Ajoute les styles correspondants
+import Footer from "../components/Footer";
 
 const images = [
-  "/photos/Murs/mur 8.webp",
-  "/photos/Murs/mur 2.webp",
-  "/photos/Murs/mur 3.webp",
-  "/photos/Murs/mur 7.webp",
-  "/photos/Murs/mur 5.webp",
-  "/photos/Murs/mur 6.webp",
+  "/public/Murs/mur 1.webp",
+  "/public/Murs/mur 2.webp",
+  "/public/Murs/mur 3.webp",
+  "/public/Murs/mur 4.webp",
+  "/public/Murs/mur 5.webp",
+  "/public/Murs/mur 6.webp",
 ];
 
 const Maconnerie = () => {
@@ -65,31 +66,7 @@ const Maconnerie = () => {
         </section>
       </main>
 
-      <footer>
-        <div className="footer-content">
-          <p>&copy; 2024 LP Paysages. Tous droits réservés.</p>
-          <ul className="socials">
-            <li>
-              <a
-                href="https://www.facebook.com/p/LP-Paysages-100069803825796/?locale=fr_FR"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/lp.paysages/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Affichage de la modal si une image est sélectionnée */}
       {selectedImageIndex !== null && (

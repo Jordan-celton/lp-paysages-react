@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import HeaderPages from "../components/HeaderPages";
 import ImageModal from "../components/ImageModal";
 import "../styles/Terrasses.css"; // Ajoute les styles correspondants
+import Footer from "../components/Footer";
 
 const images = [
-  "/photos/Terrasse/terrasse 1.jpg",
-  "/photos/Terrasse/terrasse 2.jpg",
-  "/photos/Terrasse/terrasse 3.jpg",
-  "/photos/Terrasse/terrasse 4.jpg",
-  "/photos/Terrasse/terrasse 5.jpg",
-  "/photos/Terrasse/terrasse 6.jpg",
+  "/public/Terrasse/terrasse 1.jpg",
+  "/public/Terrasse/terrasse 2.jpg",
+  "/public/Terrasse/terrasse 3.jpg",
+  "/public/Terrasse/terrasse 4.jpg",
+  "/public/Terrasse/terrasse 5.jpg",
+  "/public/Terrasse/terrasse 6.jpg",
 ];
 
 const Terrasses = () => {
@@ -65,31 +66,7 @@ const Terrasses = () => {
         </section>
       </main>
 
-      <footer>
-        <div className="footer-content">
-          <p>&copy; 2024 LP Paysages. Tous droits réservés.</p>
-          <ul className="socials">
-            <li>
-              <a
-                href="https://www.facebook.com/p/LP-Paysages-100069803825796/?locale=fr_FR"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/lp.paysages/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Affichage de la modal si une image est sélectionnée */}
       {selectedImageIndex !== null && (

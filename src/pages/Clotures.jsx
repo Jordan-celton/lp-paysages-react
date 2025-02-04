@@ -8,11 +8,11 @@ const Clotures = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const images = [
-    "/photos/Clotûres/cloture 1.webp",
-    "/photos/Clotûres/cloture 2.webp",
-    "/photos/Clotûres/cloture 4.webp",
-    "/photos/Clotûres/cloture 5.webp",
-    "/photos/Clotûres/cloture 7.webp",
+    "/public/Clotûres/cloture 1.webp",
+    "/public/Clotûres/cloture 2.webp",
+    "/public/Clotûres/cloture 4.webp",
+    "/public/Clotûres/cloture 5.webp",
+    "/public/Clotûres/cloture 7.webp",
   ];
 
   const openModal = (index) => {

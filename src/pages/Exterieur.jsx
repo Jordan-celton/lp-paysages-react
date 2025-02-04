@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import HeaderPages from "../components/HeaderPages";
 import ImageModal from "../components/ImageModal";
 import "../styles/Exterieur.css"; // Ajoute les styles correspondants
+import Footer from "../components/Footer";
 
 const images = [
-  "/photos/Aménagement extérieur/amenagement-1.webp",
-  "/photos/Aménagement extérieur/amenagement-2.webp",
-  "/photos/Aménagement extérieur/amenagement-3.webp",
-  "/photos/Aménagement extérieur/amenagement-4.webp",
-  "/photos/Aménagement extérieur/amenagement-5.webp",
-  "/photos/Aménagement extérieur/amenagement-7.webp",
+  "/public/Aménagement extérieur/amenagement-1.webp",
+  "/public/Aménagement extérieur/amenagement-2.webp",
+  "/public/Aménagement extérieur/amenagement-3.webp",
+  "/public/Aménagement extérieur/amenagement-4.webp",
+  "/public/Aménagement extérieur/amenagement-5.webp",
+  "/public/Aménagement extérieur/amenagement-7.webp",
 ];
 
 const Exterieur = () => {
@@ -65,31 +66,7 @@ const Exterieur = () => {
         </section>
       </main>
 
-      <footer>
-        <div className="footer-content">
-          <p>&copy; 2024 LP Paysages. Tous droits réservés.</p>
-          <ul className="socials">
-            <li>
-              <a
-                href="https://www.facebook.com/p/LP-Paysages-100069803825796/?locale=fr_FR"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/lp.paysages/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Affichage de la modal si une image est sélectionnée */}
       {selectedImageIndex !== null && (
