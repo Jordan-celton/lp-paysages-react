@@ -3,7 +3,18 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Titre des services */
+h2 {
+    text-align: center;
     margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #333;
 }
 
 /* Style de chaque service */
@@ -31,6 +42,7 @@
 
 .service:hover i {
     transform: scale(1.1);
+    /* Effet d'agrandissement au survol */
 }
 
 /* Titre de service */
@@ -46,9 +58,48 @@
     margin-bottom: 20px;
 }
 
-/* Adaptation pour petits écrans */
+/* Adaptation pour tablettes (768px) */
 @media (max-width: 768px) {
     .service-container {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        /* Réduire l'écart entre les services sur les petits écrans */
+    }
+
+    .service i {
+        font-size: 2.5rem;
+    }
+
+    .service h3 {
+        font-size: 1.3rem;
+    }
+
+    .service p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Adaptation pour très petits écrans (mobiles) */
+@media (max-width: 480px) {
+    .service-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        /* Espacement réduit */
+    }
+
+    .service {
+        padding: 20px;
+    }
+
+    .service i {
+        font-size: 2rem;
+    }
+
+    .service h3 {
+        font-size: 1.2rem;
+    }
+
+    .service p {
+        font-size: 0.9rem;
     }
 }

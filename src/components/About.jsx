@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "aos/dist/aos.css";
-import "../styles/About.css"; // Import du CSS
+import "../styles/About.css";
 
 const About = () => {
   const [modalOpen, setModalOpen] = useState(false);

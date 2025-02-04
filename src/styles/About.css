@@ -67,38 +67,43 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 99999;
+
 }
 
 .modal-content {
     background: white;
     padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
     text-align: left;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    overflow-y: auto;
 }
 
-/* Bouton de fermeture */
 .close {
-    font-size: 1.5rem;
-    cursor: pointer;
-    float: right;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
     color: #333;
+    cursor: pointer;
 }
 
 .close:hover {
     color: red;
 }
 
-/* Formulaire */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 50px;
 }
-
 input,
 textarea {
     width: 100%;
@@ -128,22 +133,75 @@ button[type="submit"]:hover {
 
 /* RESPONSIVE DESIGN */
 
-/* Tablette */
-@media (min-width: 768px) {
+/* MOBILE (petits écrans) */
+@media (max-width: 480px) {
+    #a-propos {
+        padding: 20px 10px;
+    }
+
+    .a-propos h2 {
+        font-size: 1.5rem;
+    }
+
     .a-propos-container {
-        flex-direction: row;
-        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .a-propos-texte {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .devis {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .form input,
+    .form textarea,
+    .form button {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablette */
+@media (min-width: 481px) and (max-width: 768px) {
+    .a-propos-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .a-propos-texte {
+        max-width: 80%;
+    }
+
+    .devis {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .modal-content {
+        width: 80%;
+        padding: 25px;
+    }
+}
+
+/* Desktop (écrans plus grands) */
+@media (min-width: 1024px) {
+    .a-propos-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .a-propos-texte {
         max-width: 600px;
-    }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-    .a-propos-texte {
-        max-width: 800px;
     }
 
     .modal-content {

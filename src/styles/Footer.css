@@ -5,8 +5,9 @@ footer {
     text-align: center;
     padding: 20px 10px;
     position: relative;
-    bottom: 0;
+    /* Assure que le footer est positionné par rapport au contenu */
     width: 100%;
+    box-sizing: border-box;
 }
 
 /* Contenu du footer */
@@ -41,27 +42,29 @@ footer {
     transition: color 0.3s, transform 0.2s;
 }
 
+/* Effet au survol des icônes */
 .socials a:hover {
     color: #4CAF50;
     transform: scale(1.1);
 }
 
-/* Responsive Design */
+/* Responsivité */
 
-/* Tablette */
+/* Tablette (écrans de taille moyenne) */
 @media (min-width: 768px) {
     .footer-content {
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         max-width: 800px;
         margin: 0 auto;
+        padding: 10px;
     }
 }
 
-/* Desktop */
+/* Desktop (écrans larges) */
 @media (min-width: 1024px) {
     footer {
-        padding: 30px;
+        padding: 30px 10px;
     }
 
     .footer-content p {
@@ -71,4 +74,27 @@ footer {
     .socials a {
         font-size: 1.7rem;
     }
+}
+
+/* Mobile (écrans très petits, notamment les smartphones) */
+@media (max-width: 767px) {
+    .footer-content {
+        gap: 15px;
+        padding: 20px;
+        /* Espacement plus large */
+    }
+
+    .socials a {
+        font-size: 1.8rem;
+        /* Agrandir les icônes pour les rendre plus visibles */
+    }
+}
+
+/* Pour assurer que le footer est toujours en bas sur des pages courtes */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    justify-content: space-between;
+    /* Pour pousser le footer vers le bas */
 }

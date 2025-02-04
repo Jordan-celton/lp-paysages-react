@@ -26,6 +26,8 @@
     font-size: 1.2rem;
     color: #555;
     margin-bottom: 20px;
+    line-height: 1.5;
+    /* Augmente l'espace entre les lignes pour une meilleure lisibilité */
 }
 
 /* Style de l'auteur du témoignage */
@@ -48,15 +50,53 @@
 
 /* Adaptation sur mobile */
 @media (max-width: 768px) {
+    .carousel-container {
+        padding: 30px 0;
+        /* Réduire l'espace autour du carrousel pour les petits écrans */
+    }
+
     .carousel-item {
-        padding: 20px;
+        padding: 15px;
+        /* Réduire le padding pour plus de contenu visible sur mobile */
     }
 
     .review-text {
         font-size: 1rem;
+        line-height: 1.4;
+        /* Augmente la lisibilité en réduisant l'espace entre les lignes */
     }
 
     .review-author {
         font-size: 1rem;
+    }
+}
+
+/* Boutons de navigation (précédent et suivant) */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 2rem;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: #ff5c5c;
+    /* Changer la couleur au survol */
+    color: white;
+}
+
+/* Pour améliorer la visibilité des boutons sur les petits écrans */
+@media (max-width: 480px) {
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        font-size: 1.5rem;
+        /* Réduire la taille des icônes pour qu'elles soient mieux ajustées */
+        padding: 8px;
     }
 }
