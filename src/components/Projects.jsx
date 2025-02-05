@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
 import "../styles/Projects.css";
+import Piscine from "../assets/Piscine/après-piscine3.jpg";
+import Exterieur from "../assets/Aménagement extérieur/amenagement-1.webp";
+import Cloture from "../assets/Clotûres/cloture_1.webp";
+import Mur from "../assets/Murs/mur-1.webp";
 
 const Projects = () => {
   return (
@@ -9,7 +13,7 @@ const Projects = () => {
       <div className="card-container">
         <Link to="/terrasses">
           <div className="card">
-            <img src="/public/Piscine/après-piscine3.jpg" alt="Terrasse" />
+            <img src={Piscine} alt="Terrasse" />
             <div className="card-content" data-aos="fade-left">
               <h3>Terrasses</h3>
               <p>
@@ -23,10 +27,7 @@ const Projects = () => {
 
         <Link to="/exterieur">
           <div className="card">
-            <img
-              src="/public/Aménagement extérieur/amenagement-1.webp"
-              alt="Aménagement extérieur"
-            />
+            <img src={Exterieur} alt="Aménagement extérieur" />
             <div className="card-content" data-aos="fade-left">
               <h3>Aménagements extérieurs</h3>
               <p>
@@ -40,7 +41,7 @@ const Projects = () => {
 
         <Link to="/clotures">
           <div className="card">
-            <img src="/public/Clotûres/cloture 2.webp" alt="Clôtures" />
+            <img src={Cloture} alt="Clôtures" />
             <div className="card-content" data-aos="fade-left">
               <h3>Clôtures</h3>
               <p>
@@ -54,7 +55,7 @@ const Projects = () => {
 
         <Link to="/maconnerie">
           <div className="card">
-            <img src="/public/Murs/mur 5.webp" alt="Murs" />
+            <img src={Mur} alt="Murs" />
             <div className="card-content" data-aos="fade-left">
               <h3>Maçonneries</h3>
               <p>

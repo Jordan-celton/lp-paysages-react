@@ -1,3 +1,4 @@
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Terrasses from "./pages/Terrasses";
@@ -7,15 +8,17 @@ import Maconnerie from "./pages/Maconnerie";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/terrasses" element={<Terrasses />} />
-        <Route path="/clotures" element={<Clotures />} />
-        <Route path="/exterieur" element={<Exterieur />} />
-        <Route path="/maconnerie" element={<Maconnerie />} />
-      </Routes>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/terrasses" element={<Terrasses />} />
+          <Route path="/clotures" element={<Clotures />} />
+          <Route path="/exterieur" element={<Exterieur />} />
+          <Route path="/maconnerie" element={<Maconnerie />} />
+        </Routes>
+      </Router>
+    </HelmetProvider>
   );
 }
 

@@ -17,35 +17,52 @@ const Header = () => {
   return (
     <header>
       <img className="logo" src={logo} alt="logo LP Paysages" />
-      <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
-        <ul>
-          <li>
-            <Link to="accueil" smooth={true} duration={500} onClick={closeMenu}>
-              <i className="fas fa-home"></i> Accueil
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="a-propos"
-              smooth={true}
-              duration={500}
-              onClick={closeMenu}
-            >
-              <i className="fas fa-info-circle"></i> À Propos
-            </Link>
-          </li>
-          <li>
-            <Link to="projets" smooth={true} duration={500} onClick={closeMenu}>
-              <i className="fas fa-briefcase"></i> Réalisations
-            </Link>
-          </li>
-          <li>
-            <Link to="contact" smooth={true} duration={500} onClick={closeMenu}>
-              <i className="fas fa-envelope"></i> Contact
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="nav-container">
+        <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
+          <ul>
+            <li>
+              <Link
+                to="accueil"
+                smooth={true}
+                duration={500}
+                onClick={closeMenu}
+              >
+                <i className="fas fa-home"></i> Accueil
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="a-propos"
+                smooth={true}
+                duration={500}
+                onClick={closeMenu}
+              >
+                <i className="fas fa-info-circle"></i> À Propos
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="projets"
+                smooth={true}
+                duration={500}
+                onClick={closeMenu}
+              >
+                <i className="fas fa-briefcase"></i> Réalisations
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="contact"
+                smooth={true}
+                duration={500}
+                onClick={closeMenu}
+              >
+                <i className="fas fa-envelope"></i> Contact
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <div
         className="burger"
         onClick={toggleMenu}

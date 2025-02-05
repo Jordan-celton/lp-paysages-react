@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
@@ -13,6 +14,33 @@ const Home = () => {
 
   return (
     <div>
+      {/* Balises SEO */}
+      <Helmet>
+        <title>LP Paysages | Paysagiste expert en aménagement extérieur</title>
+        <meta
+          name="description"
+          content="LP Paysages transforme vos espaces verts avec des aménagements paysagers de qualité. Demandez un devis dès maintenant !"
+        />
+        <meta
+          name="keywords"
+          content="paysagiste, jardin, aménagement extérieur, espaces verts, entretien jardin, création paysagère"
+        />
+        <meta
+          property="og:title"
+          content="LP Paysages | Aménagement extérieur et entretien de jardins"
+        />
+        <meta
+          property="og:description"
+          content="Découvrez nos services de paysagisme et embellissez votre espace extérieur."
+        />
+        <meta
+          property="og:image"
+          content="https://www.lppaysages.com/images/hero.jpg"
+        />
+        <meta property="og:url" content="https://www.lppaysages.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       <Header />
       <Hero />
       <About setModalOpen={setModalOpen} />
@@ -22,13 +50,17 @@ const Home = () => {
       <Contact />
       <Footer />
 
-      {/* La modale est ici, dans Home */}
+      {/* La modale pour la demande de devis */}
       {modalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close" onClick={() => setModalOpen(false)}>
+            <button
+              className="close"
+              onClick={() => setModalOpen(false)}
+              aria-label="Fermer la modale"
+            >
               &times;
-            </span>
+            </button>
             <h2>Demande de devis</h2>
             <form action="send_devis.php" method="post">
               <label htmlFor="nom">Nom:</label>

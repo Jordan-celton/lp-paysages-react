@@ -3,7 +3,10 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../styles/Hero.css"; // Fichier CSS pour le style
+import "../styles/Hero.css";
+import ImageHero1 from "../assets/Aménagement extérieur/amenagement-1.webp";
+import ImageHero2 from "../assets/Clotûres/cloture_1.webp";
+import ImageHero3 from "../assets/Murs/mur-1.webp";
 
 const Hero = () => {
   return (
@@ -19,16 +22,13 @@ const Hero = () => {
         className="swiper-container"
       >
         <SwiperSlide>
-          <img
-            src="/public/Aménagement extérieur/amenagement-1.webp"
-            alt="Image 1"
-          />
+          <img src={ImageHero1} alt="Image 1" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/public/Clotûres/cloture 1.webp" alt="Image 2" />
+          <img src={ImageHero2} alt="Image 2" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/public/Murs/mur 1.webp" alt="Image 3" />
+          <img src={ImageHero3} alt="Image 3" />
         </SwiperSlide>
       </Swiper>
 

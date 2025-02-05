@@ -27,25 +27,27 @@ const HeaderPages = () => {
   return (
     <header>
       <img className="logo" src={logo} alt="logo LP Paysages" />
-      <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
-        <ul>
-          <li>
-            <a onClick={() => handleNavigation("accueil")}>
-              <i className="fas fa-home"></i> Accueil
-            </a>
-          </li>
-          <li>
-            <a onClick={() => handleNavigation("projets")}>
-              <i className="fas fa-briefcase"></i> Réalisations
-            </a>
-          </li>
-          <li>
-            <a onClick={() => handleNavigation("contact")}>
-              <i className="fas fa-envelope"></i> Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <div className="nav-container">
+        <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
+          <ul>
+            <li>
+              <a onClick={() => handleNavigation("accueil")}>
+                <i className="fas fa-home"></i> Accueil
+              </a>
+            </li>
+            <li>
+              <a onClick={() => handleNavigation("projets")}>
+                <i className="fas fa-briefcase"></i> Réalisations
+              </a>
+            </li>
+            <li>
+              <a onClick={() => handleNavigation("contact")}>
+                <i className="fas fa-envelope"></i> Contact
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <div className="burger" onClick={toggleMenu}>
         <div className={`line1 ${menuOpen ? "toggle" : ""}`}></div>
         <div className={`line2 ${menuOpen ? "toggle" : ""}`}></div>
