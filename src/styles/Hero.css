@@ -7,35 +7,37 @@
 
 /* Swiper container */
 .swiper-container {
-  background: url("../assets/Aménagement extérieur/amenagement-1.webp") no-repeat center center;
-    background-size: cover;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}   
+  position: relative;
+  z-index: 2;
+  overflow: visible !important;
+}
+
+/* Swiper Slides */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 1;
+
+  transition: opacity 0.5s ease-in-out;
+}
 
 /* Enlever le background des boutons de navigation */
 .swiper-button-prev,
 .swiper-button-next {
-    background: none!important;
-    color: #fff!important;
-    box-shadow: none;
+  background: none !important;
+  color: #fff !important;
 }
 
-
-/* Images de Swiper */
-.swiper-slide img {
-  width: 100%;
-  height: auto;
-  min-height: 500px;
-  object-fit: cover;
-  opacity: 0;
-}
-
-/* Contenu de la section Hero (texte et bouton) */
+/* Contenu de la section Hero */
 .hero-content {
   position: absolute;
   top: 50%;

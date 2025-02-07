@@ -33,29 +33,29 @@ const HeaderPages = () => {
         >
           <ul>
             <li>
-              <button
+              <a
                 onClick={() => handleNavigation("accueil")}
                 aria-label="Aller à la section Accueil"
               >
                 <i className="fas fa-home" aria-hidden="true"></i> Accueil
-              </button>
+              </a>
             </li>
             <li>
-              <button
+              <a
                 onClick={() => handleNavigation("projets")}
                 aria-label="Aller à la section Réalisations"
               >
                 <i className="fas fa-briefcase" aria-hidden="true"></i>{" "}
                 Réalisations
-              </button>
+              </a>
             </li>
             <li>
-              <button
+              <a
                 onClick={() => handleNavigation("contact")}
                 aria-label="Aller à la section Contact"
               >
                 <i className="fas fa-envelope" aria-hidden="true"></i> Contact
-              </button>
+              </a>
             </li>
           </ul>
         </nav>
