@@ -5,14 +5,23 @@ import ImageModal from "../components/ImageModal";
 import "../styles/Terrasses.css";
 import Footer from "../components/Footer";
 
+// Importation des images
+import terrasse1 from "../assets/terrasse/terrasse-1.webp";
+import terrasse2 from "../assets/terrasse/terrasse-2.webp";
+import terrasse3 from "../assets/terrasse/terrasse-3.webp";
+import terrasse4 from "../assets/terrasse/terrasse-4.webp";
+import terrasse5 from "../assets/terrasse/terrasse-5.webp";
+import terrasse6 from "../assets/terrasse/terrasse-6.webp";
+import terrasse7 from "../assets/terrasse/terrasse-7.webp";
+
 const images = [
-  "../assets/Terrasse/terrasse-1.jpg",
-  "../assets/Terrasse/terrasse-2.jpg",
-  "../assets/Terrasse/terrasse-3.jpg",
-  "../assets/Terrasse/terrasse-4.jpg",
-  "../assets/Terrasse/terrasse-5.jpg",
-  "../assets/Terrasse/terrasse-6.jpg",
-  "../assets/Terrasse/terrasse-7.jpg",
+  terrasse1,
+  terrasse2,
+  terrasse3,
+  terrasse4,
+  terrasse5,
+  terrasse6,
+  terrasse7,
 ];
 
 const Terrasses = () => {
@@ -57,12 +66,13 @@ const Terrasses = () => {
           property="og:description"
           content="Nos réalisations de terrasses en bois et en pierre à Quimper et ses environs."
         />
-        <meta property="og:image" content="/Terrasse/terrasse-1.jpg" />
+        <meta property="og:image" content={terrasse1} />
         <meta
           property="og:url"
           content="https://www.lppaysages.com/terrasses"
         />
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="preload" href={terrasse1} as="image" />
       </Helmet>
 
       <HeaderPages />
@@ -70,7 +80,9 @@ const Terrasses = () => {
         <section>
           <h1>LP Paysages</h1>
           <p>
-            Voici quelques réalisations de terrasses aux alentours de Quimper.
+            Découvrez nos réalisations de terrasses en bois et en pierre autour
+            de Quimper. Profitez d&apos;un espace extérieur unique avec LP
+            Paysages.
           </p>
         </section>
 

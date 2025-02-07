@@ -5,30 +5,36 @@ import ImageModal from "../components/ImageModal";
 import "../styles/Exterieur.css";
 import Footer from "../components/Footer";
 
+// Importation des images (en utilisant des importations optimisées pour les images)
+import amenagement1 from "../assets/Aménagement extérieur/amenagement-1.webp";
+import amenagement2 from "../assets/Aménagement extérieur/amenagement-2.webp";
+import amenagement3 from "../assets/Aménagement extérieur/amenagement-3.webp";
+import amenagement4 from "../assets/Aménagement extérieur/amenagement-4.webp";
+import amenagement5 from "../assets/Aménagement extérieur/amenagement-5.webp";
+import amenagement6 from "../assets/Aménagement extérieur/amenagement-6.webp";
+import amenagement7 from "../assets/Aménagement extérieur/amenagement-7.webp";
+
 const images = [
-  "../assets/Aménagement extérieur/amenagement-1.webp",
-  "../assets/Aménagement extérieur/amenagement-2.webp",
-  "../assets/Aménagement extérieur/amenagement-3.webp",
-  "../assets/Aménagement extérieur/amenagement-4.webp",
-  "../assets/Aménagement extérieur/amenagement-5.webp",
-  "../assets/Aménagement extérieur/amenagement-6.webp",
-  "../assets/Aménagement extérieur/amenagement-7.webp",
+  amenagement1,
+  amenagement2,
+  amenagement3,
+  amenagement4,
+  amenagement5,
+  amenagement6,
+  amenagement7,
 ];
 
 const Exterieur = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
-  // Ouvre la modal avec l'image sélectionnée
   const openModal = (index) => {
     setSelectedImageIndex(index);
   };
 
-  // Ferme la modal
   const closeModal = () => {
     setSelectedImageIndex(null);
   };
 
-  // Gestion de la touche "Escape" pour fermer la modal
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -60,15 +66,13 @@ const Exterieur = () => {
           property="og:description"
           content="Découvrez quelques-uns de nos projets d'aménagements extérieurs réalisés à Quimper et ses environs."
         />
-        <meta
-          property="og:image"
-          content="/Aménagement extérieur/amenagement-1.webp"
-        />
+        <meta property="og:image" content={amenagement1} />
         <meta
           property="og:url"
           content="https://www.lppaysages.com/amenagement-exterieur"
         />
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="preload" href={amenagement1} as="image" />
       </Helmet>
 
       <HeaderPages />
@@ -104,7 +108,7 @@ const Exterieur = () => {
 
       <Footer />
 
-      {/* Affichage de la modal si une image est sélectionnée */}
+      {/* Modal avec l'image sélectionnée */}
       {selectedImageIndex !== null && (
         <ImageModal
           images={images}

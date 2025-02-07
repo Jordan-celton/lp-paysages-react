@@ -17,18 +17,38 @@ const Hero = () => {
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}
+        lazyPreloadPrevNext={1}
+        initialSlide={0}
         className="swiper-container"
       >
         <SwiperSlide>
-          <img src={ImageHero1} alt="Image 1" />
+          <img
+            src={ImageHero1}
+            alt="Aménagement extérieur avec des plantations et des allées"
+            loading="lazy"
+            width="100%"
+            height="auto"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={ImageHero2} alt="Image 2" />
+          <img
+            src={ImageHero2}
+            alt="Clôture moderne pour délimiter un jardin"
+            loading="lazy"
+            width="100%"
+            height="auto"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={ImageHero3} alt="Image 3" />
+          <img
+            src={ImageHero3}
+            alt="Mur paysager décoratif dans un jardin"
+            loading="lazy"
+            width="100%"
+            height="auto"
+          />
         </SwiperSlide>
       </Swiper>
 

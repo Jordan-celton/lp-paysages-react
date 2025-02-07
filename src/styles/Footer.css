@@ -1,11 +1,24 @@
+/* Définition des variables CSS */
+:root {
+    --primary-color: #333;
+    --hover-color: #4CAF50;
+    --footer-padding: 20px 10px;
+    --font-size-base: 1rem;
+    --font-size-large: 1.1rem;
+    --font-size-icons: 1.5rem;
+    --font-size-icons-mobile: 1.8rem;
+    --transition-speed: 0.3s;
+    --transform-speed: 0.2s;
+    --gap: 15px;
+}
+
 /* Footer global */
 footer {
-    background-color: #333;
+    background-color: var(--primary-color);
     color: white;
     text-align: center;
-    padding: 20px 10px;
+    padding: var(--footer-padding);
     position: relative;
-    /* Assure que le footer est positionné par rapport au contenu */
     width: 100%;
     box-sizing: border-box;
 }
@@ -15,19 +28,19 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: var(--gap);
 }
 
 /* Texte du footer */
 .footer-content p {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
 }
 
 /* Icônes sociales */
 .socials {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: var(--gap);
     padding: 0;
     margin: 0;
 }
@@ -38,13 +51,13 @@ footer {
 
 .socials a {
     color: white;
-    font-size: 1.5rem;
-    transition: color 0.3s, transform 0.2s;
+    font-size: var(--font-size-icons);
+    transition: color var(--transition-speed), transform var(--transform-speed);
 }
 
 /* Effet au survol des icônes */
 .socials a:hover {
-    color: #4CAF50;
+    color: var(--hover-color);
     transform: scale(1.1);
 }
 
@@ -68,7 +81,7 @@ footer {
     }
 
     .footer-content p {
-        font-size: 1.1rem;
+        font-size: var(--font-size-large);
     }
 
     .socials a {
@@ -81,12 +94,10 @@ footer {
     .footer-content {
         gap: 15px;
         padding: 20px;
-        /* Espacement plus large */
     }
 
     .socials a {
-        font-size: 1.8rem;
-        /* Agrandir les icônes pour les rendre plus visibles */
+        font-size: var(--font-size-icons-mobile);
     }
 }
 
@@ -96,5 +107,4 @@ footer {
     flex-direction: column;
     min-height: 100%;
     justify-content: space-between;
-    /* Pour pousser le footer vers le bas */
 }

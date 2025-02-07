@@ -2,34 +2,32 @@ import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import HeaderPages from "../components/HeaderPages";
 import ImageModal from "../components/ImageModal";
-import "../styles/Maconnerie.css"; // Ajoute les styles correspondants
+import "../styles/Maconnerie.css";
 import Footer from "../components/Footer";
 
-const images = [
-  "../assets/Murs/mur-1.webp",
-  "../assets/Murs/mur-2.webp",
-  "../assets/Murs/mur-3.webp",
-  "../assets/Murs/mur-4.webp",
-  "../assets/Murs/mur-5.webp",
-  "../assets/Murs/mur-6.webp",
-  "../assets/Murs/mur-7.webp",
-  "../assets/Murs/mur-8.webp",
-];
+// Importation des images
+import mur1 from "../assets/Murs/mur-1.webp";
+import mur2 from "../assets/Murs/mur-2.webp";
+import mur3 from "../assets/Murs/mur-3.webp";
+import mur4 from "../assets/Murs/mur-4.webp";
+import mur5 from "../assets/Murs/mur-5.webp";
+import mur6 from "../assets/Murs/mur-6.webp";
+import mur7 from "../assets/Murs/mur-7.webp";
+import mur8 from "../assets/Murs/mur-8.webp";
+
+const images = [mur1, mur2, mur3, mur4, mur5, mur6, mur7, mur8];
 
 const Maconnerie = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
-  // Ouvre la modal avec l'image sélectionnée
   const openModal = (index) => {
     setSelectedImageIndex(index);
   };
 
-  // Ferme la modal
   const closeModal = () => {
     setSelectedImageIndex(null);
   };
 
-  // Gestion de la touche "Escape" pour fermer la modal
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -61,12 +59,13 @@ const Maconnerie = () => {
           property="og:description"
           content="Découvrez quelques réalisations de maçonnerie paysagère autour de Quimper."
         />
-        <meta property="og:image" content="/Murs/mur-1.webp" />
+        <meta property="og:image" content={mur1} />
         <meta
           property="og:url"
           content="https://www.lppaysages.com/maconnerie"
         />
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="preload" href={mur1} as="image" />
       </Helmet>
 
       <HeaderPages />
@@ -103,7 +102,6 @@ const Maconnerie = () => {
 
       <Footer />
 
-      {/* Affichage de la modal si une image est sélectionnée */}
       {selectedImageIndex !== null && (
         <ImageModal
           images={images}

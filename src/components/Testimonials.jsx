@@ -49,20 +49,39 @@ const Testimonials = () => {
           }}
           autoplay={{ delay: 5000 }}
           loop={true}
+          aria-live="polite" // Ajout de aria-live pour que le contenu change soit annoncé par les lecteurs d'écran
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>
               <div className="carousel-item">
-                <p className="review-text">&quot;{testimonial.text}&quot;</p>
-                <p className="review-author">- {testimonial.author}</p>
+                <p
+                  className="review-text"
+                  aria-labelledby={`testimonial-${index}`}
+                >
+                  &quot;{testimonial.text}&quot;
+                </p>
+                <p
+                  className="review-author"
+                  aria-describedby={`testimonial-author-${index}`}
+                >
+                  - {testimonial.author}
+                </p>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
 
-      <div className="swiper-button-prev" aria-label="Précédent"></div>
-      <div className="swiper-button-next" aria-label="Suivant"></div>
+      <div
+        className="swiper-button-prev"
+        aria-label="Précédent"
+        tabIndex="0" // Assurer la navigation clavier
+      ></div>
+      <div
+        className="swiper-button-next"
+        aria-label="Suivant"
+        tabIndex="0" // Assurer la navigation clavier
+      ></div>
     </section>
   );
 };

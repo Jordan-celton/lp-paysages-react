@@ -22,13 +22,18 @@ const About = ({ setModalOpen }) => {
           </p>
         </div>
 
-        <button className="devis" onClick={() => setModalOpen(true)}>
+        <button
+          className="devis"
+          onClick={() => setModalOpen(true)}
+          aria-label="Demander un devis"
+        >
           Demande de devis
         </button>
       </div>
     </section>
   );
 };
+
 About.propTypes = {
   setModalOpen: PropTypes.func.isRequired,
 };

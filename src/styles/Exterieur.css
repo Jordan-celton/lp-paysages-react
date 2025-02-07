@@ -1,18 +1,27 @@
+/* Définition des variables CSS */
+:root {
+    --primary-color: #333;
+    --hover-color: #ff5c5c;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --gap: 20px;
+}
+
 /* Mise en page de la grille des images */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    gap: var(--gap);
+    padding: var(--gap);
 }
 
 /* Style pour chaque image */
 .grid-item img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed) ease;
 }
 
 /* Effet de zoom au survol des images */
@@ -22,9 +31,9 @@
 
 /* Style pour le footer */
 footer {
-    background-color: #333;
+    background-color: var(--primary-color);
     color: white;
-    padding: 20px;
+    padding: var(--gap);
     text-align: center;
 }
 
@@ -41,11 +50,11 @@ footer .socials li {
 footer .socials a {
     color: white;
     font-size: 1.5rem;
-    transition: color 0.3s;
+    transition: color var(--transition-speed);
 }
 
 footer .socials a:hover {
-    color: #ff5c5c;
+    color: var(--hover-color);
 }
 
 /* Style pour la modal */
@@ -60,14 +69,14 @@ footer .socials a:hover {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn var(--transition-speed) ease;
 }
 
 .modal-content {
     max-width: 90%;
     max-height: 90%;
     margin: 0 auto;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
 }
 
 .close {
@@ -77,11 +86,11 @@ footer .socials a:hover {
     font-size: 2rem;
     color: white;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: color var(--transition-speed);
 }
 
 .close:hover {
-    color: #ff5c5c;
+    color: var(--hover-color);
 }
 
 /* Animation d'apparition de la modal */

@@ -1,16 +1,30 @@
 import { Helmet } from "react-helmet-async";
-import { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
-import About from "../components/About";
-import Services from "../components/Services";
-import Projects from "../components/Projects";
-import Testimonials from "../components/Testimonials";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
+
+// Lazy load des autres composants
+const About = React.lazy(() => import("../components/About"));
+const Services = React.lazy(() => import("../components/Services"));
+const Projects = React.lazy(() => import("../components/Projects"));
+const Testimonials = React.lazy(() => import("../components/Testimonials"));
+const Contact = React.lazy(() => import("../components/Contact"));
+import Footer from "../components/Footer"; // importation statique
 
 const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
+
+  // Fonction pour fermer la modale avec la touche "Escape"
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        setModalOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, []);
 
   return (
     <div>
@@ -35,24 +49,52 @@ const Home = () => {
         />
         <meta
           property="og:image"
-          content="https://www.lppaysages.com/images/hero.jpg"
+          content="https://www.lppaysages.com/images/hero.webp" // Image WebP optimisée
         />
         <meta property="og:url" content="https://www.lppaysages.com" />
         <meta name="twitter:card" content="summary_large_image" />
+
+        {/* Préchargement des images principales */}
+        <link
+          rel="preload"
+          href="https://www.lppaysages.com/images/hero.webp"
+          as="image"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          href="https://www.lppaysages.com/images/hero-alt.webp"
+          as="image"
+          type="image/webp"
+        />
       </Helmet>
 
+      {/* Header et Hero */}
       <Header />
       <Hero />
-      <About setModalOpen={setModalOpen} />
-      <Services />
-      <Projects />
-      <Testimonials />
-      <Contact />
-      <Footer />
+
+      {/* Chargement paresseux des autres sections */}
+      <Suspense
+        fallback={
+          <div className="loading-indicator">Chargement des sections...</div>
+        }
+      >
+        <About setModalOpen={setModalOpen} />
+        <Services />
+        <Projects />
+        <Testimonials />
+        <Contact />
+        <Footer />
+      </Suspense>
 
       {/* La modale pour la demande de devis */}
       {modalOpen && (
-        <div className="modal">
+        <div
+          className="modal"
+          role="dialog"
+          aria-labelledby="modal-title"
+          aria-hidden={!modalOpen}
+        >
           <div className="modal-content">
             <button
               className="close"
@@ -61,7 +103,7 @@ const Home = () => {
             >
               &times;
             </button>
-            <h2>Demande de devis</h2>
+            <h2 id="modal-title">Demande de devis</h2>
             <form action="send_devis.php" method="post">
               <label htmlFor="nom">Nom:</label>
               <input type="text" id="nom" name="nom" required />

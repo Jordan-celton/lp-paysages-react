@@ -7,11 +7,14 @@
 
 /* Swiper container */
 .swiper-container {
+  background: url("../assets/Aménagement extérieur/amenagement-1.webp") no-repeat center center;
+    background-size: cover;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
 }   
 
 /* Enlever le background des boutons de navigation */
@@ -26,8 +29,10 @@
 /* Images de Swiper */
 .swiper-slide img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 500px;
   object-fit: cover;
+  opacity: 0;
 }
 
 /* Contenu de la section Hero (texte et bouton) */

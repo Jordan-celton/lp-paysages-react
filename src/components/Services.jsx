@@ -9,9 +9,15 @@ const Services = () => {
         <div
           className="service"
           data-aos="fade-left"
-          aria-label="Conception de Jardins"
+          aria-label="Service de conception de jardins"
+          role="article"
         >
-          <i className="fas fa-tree" aria-hidden="true"></i>
+          <i
+            className="fas fa-tree"
+            aria-hidden="true"
+            role="img"
+            alt="Arbre icon"
+          />
           <h3>Conception de Jardins</h3>
           <p>
             Nous créons des espaces extérieurs sur mesure pour vous offrir un
@@ -21,9 +27,15 @@ const Services = () => {
         <div
           className="service"
           data-aos="fade-left"
-          aria-label="Entretien des jardins"
+          aria-label="Service d'entretien des jardins"
+          role="article"
         >
-          <i className="fas fa-leaf" aria-hidden="true"></i>
+          <i
+            className="fas fa-leaf"
+            aria-hidden="true"
+            role="img"
+            alt="Feuille icon"
+          />
           <h3>Entretien</h3>
           <p>
             Des services d&apos;entretien réguliers pour garder votre jardin en
@@ -33,9 +45,15 @@ const Services = () => {
         <div
           className="service"
           data-aos="fade-left"
-          aria-label="Rénovation de jardins"
+          aria-label="Service de rénovation de jardins"
+          role="article"
         >
-          <i className="fas fa-tools" aria-hidden="true"></i>
+          <i
+            className="fas fa-tools"
+            aria-hidden="true"
+            role="img"
+            alt="Outils icon"
+          />
           <h3>Rénovation</h3>
           <p>
             Modernisation et rénovation de vos espaces extérieurs pour les

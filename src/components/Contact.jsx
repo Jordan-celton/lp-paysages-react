@@ -9,22 +9,29 @@ const Contact = () => {
         informations ci-dessous :
       </p>
       <div className="contact-info">
-        <p>
-          <strong>Adresse :</strong> 19 Allée des Primevères, 29000 Quimper
-        </p>
-        <p>
-          <strong>Téléphone :</strong>{" "}
-          <a href="tel:0633272041">06 33 27 20 41</a>
-        </p>
-        <p>
-          <strong>Email :</strong>{" "}
-          <a href="mailto:perennecludovic@gmail.com">
-            perennecludovic@gmail.com
-          </a>
-        </p>
-        <p>
-          <strong>Horaires :</strong> Lundi au Vendredi, 9h - 18h
-        </p>
+        <address>
+          <p>
+            <strong>Adresse :</strong> 19 Allée des Primevères, 29000 Quimper
+          </p>
+          <p>
+            <strong>Téléphone :</strong>{" "}
+            <a href="tel:0633272041" aria-label="Appeler le 06 33 27 20 41">
+              06 33 27 20 41
+            </a>
+          </p>
+          <p>
+            <strong>Email :</strong>{" "}
+            <a
+              href="mailto:perennecludovic@gmail.com"
+              aria-label="Envoyer un email à perennecludovic@gmail.com"
+            >
+              perennecludovic@gmail.com
+            </a>
+          </p>
+          <p>
+            <strong>Horaires :</strong> Lundi au Vendredi, 9h - 18h
+          </p>
+        </address>
       </div>
     </section>
   );

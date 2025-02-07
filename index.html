@@ -2,103 +2,82 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Balise Title optimisée -->
   <title>LP Paysages | Paysagiste à [Ta Ville] - Création & Entretien</title>
-
-  <!-- Meta Description pour le SEO -->
   <meta name="description"
-    content="LP Paysages, expert en création et entretien d'espaces verts à [Ta Ville]. Transformez votre jardin avec nos services de paysagisme sur mesure." />
-
-  <!-- Mots-clés SEO -->
+    content="LP Paysages, expert en création et entretien d'espaces verts à [Ta Ville]. Transformez votre jardin avec nos services de paysagisme sur mesure.">
   <meta name="keywords"
-    content="paysagiste, aménagement extérieur, entretien jardin, création paysagère, espaces verts, jardinier, [Ta Ville]" />
-  <meta name="author" content="LP Paysages" />
+    content="paysagiste, aménagement extérieur, entretien jardin, création paysagère, espaces verts, jardinier, [Ta Ville]">
+  <meta name="author" content="LP Paysages">
+  <link rel="canonical" href="https://www.lppaysages.com">
 
-  <!-- Canonical pour éviter le duplicate content -->
-  <link rel="canonical" href="https://www.lppaysages.com" />
+  <!-- Préchargement des polices Google Fonts -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+    media="print" onload="this.onload=null;this.media='all';">
 
-  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="LP Paysages | Paysagiste à [Ta Ville]" />
-  <meta property="og:description"
-    content="Création et entretien de jardins avec LP Paysages. Faites appel à nos experts pour sublimer vos espaces verts." />
-  <meta property="og:image" content="https://www.lppaysages.com/images/og-image.jpg" />
-  <meta property="og:url" content="https://www.lppaysages.com" />
+  <!-- Styles critiques - Chargement immédiat -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
 
-  <!-- Twitter Card
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LP Paysages | Paysagiste à [Ta Ville]" />
-  <meta name="twitter:description"
-    content="Besoin d’un paysagiste professionnel ? LP Paysages vous accompagne pour l’entretien et la création de vos espaces verts." />
-  <meta name="twitter:image" content="https://www.lppaysages.com/images/twitter-image.jpg" /> -->
+    .hero-content {
+      text-align: center;
+      color: white;
+    }
+  </style>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <!-- Chargement différé des styles -->
+  <link rel="stylesheet" href="/assets/css/index.css" media="print" onload="this.onload=null;this.media='all';">
+  <link rel="stylesheet" href="/assets/css/all.min.css" media="print" onload="this.onload=null;this.media='all';">
+  <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" media="print"
+    onload="this.onload=null;this.media='all';">
+  <link rel="stylesheet" href="/assets/css/aos.css" media="print" onload="this.onload=null;this.media='all';">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-  <!-- AOS CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-
-  <!-- Toastr CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Animate CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-  <!-- Données structurées Schema.org pour le référencement local -->
+  <!-- Données structurées -->
   <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "LP Paysages",
-        "image": "https://www.lppaysages.com/images/logo.png",
-        "url": "https://www.lppaysages.com",
-        "telephone": "+33 6 33 27 20 41",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "19 Allée des Primevères",
-            "addressLocality": "Quimper",
-            "postalCode": "29000",
-            "addressCountry": "FR"
-        },
-        "description": "LP Paysages est une entreprise spécialisée dans l'aménagement et l'entretien d'espaces verts pour particuliers et professionnels.",
-        "openingHours": "Mo-Fr 08:00-18:00",
-        "sameAs": [
-            "https://www.facebook.com/p/LP-Paysages-100069803825796/?locale=fr_FR",
-            "https://www.instagram.com/lp.paysages/",
-        ]
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "LP Paysages",
+      "image": "https://www.lppaysages.com/images/logo.png",
+      "url": "https://www.lppaysages.com",
+      "telephone": "+33 6 33 27 20 41",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "19 Allée des Primevères",
+        "addressLocality": "Quimper",
+        "postalCode": "29000",
+        "addressCountry": "FR"
+      },
+      "description": "LP Paysages est une entreprise spécialisée dans l'aménagement et l'entretien d'espaces verts pour particuliers et professionnels.",
+      "openingHours": "Mo-Fr 08:00-18:00",
+      "sameAs": [
+        "https://www.facebook.com/p/LP-Paysages-100069803825796/?locale=fr_FR",
+        "https://www.instagram.com/lp.paysages/"
+      ]
     }
-    </script>
-
+  </script>
 </head>
 
 <body>
+  <header>
+    <h1>Bienvenue chez LP Paysages</h1>
+  </header>
+
   <div id="root"></div>
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Toastr JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-  <!-- AOS JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-  <script type="module" src="/src/main.jsx"></script>
+  <!-- Chargement optimisé des scripts -->
+  <script defer src="/assets/js/swiper-bundle.min.js"></script>
+  <script defer src="/assets/js/toastr.min.js"></script>
+  <script defer src="/assets/js/aos.js"></script>
+  <script type="module" defer src="/src/main.jsx"></script>
 </body>
 
 </html>

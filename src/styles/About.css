@@ -1,3 +1,15 @@
+/* Définition des variables CSS pour une gestion plus simple des couleurs et autres propriétés communes */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #45a049;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --font-size: 1rem;
+    --font-size-large: 2rem;
+    --transition-speed: 0.3s;
+    --modal-max-width: 600px;
+}
+
 /* Réinitialisation de base */
 * {
     margin: 0;
@@ -14,7 +26,7 @@
 }
 
 #a-propos h2 {
-    font-size: 2rem;
+    font-size: var(--font-size-large);
     margin-bottom: 20px;
     color: #333;
 }
@@ -34,7 +46,7 @@
     background: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     text-align: justify;
     max-width: 800px;
     line-height: 1.6;
@@ -42,20 +54,19 @@
 
 /* Bouton demande de devis */
 .devis {
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s;
+    font-size: var(--font-size);
+    transition: background-color var(--transition-speed);
 }
 
 .devis:hover {
-    background-color: #45a049;
+    background-color: var(--secondary-color);
 }
-
 
 /* MODAL */
 .modal {
@@ -65,7 +76,6 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    /* Arrière-plan plus sombre pour un meilleur focus sur la modale */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,7 +99,7 @@
     padding: 30px;
     border-radius: 15px;
     width: 90%;
-    max-width: 600px;
+    max-width: var(--modal-max-width);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: left;
     display: flex;
@@ -97,7 +107,6 @@
     gap: 15px;
     overflow-y: auto;
     max-height: 90vh;
-    /* Limiter la hauteur maximale pour éviter la déformation */
     animation: slideIn 0.3s ease-out;
 }
 
@@ -122,12 +131,11 @@
     font-size: 1.5rem;
     color: #333;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color var(--transition-speed);
 }
 
 .close:hover {
     color: #e74c3c;
-    /* Couleur plus forte au survol pour attirer l'attention */
 }
 
 /* Formulaire */
@@ -138,47 +146,40 @@ form {
 }
 
 input,
-textarea {
+textarea,
+button[type="submit"] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size);
     transition: border 0.3s;
 }
 
-/* Changer la bordure de l'input lors du focus */
 input:focus,
 textarea:focus {
-    border: 1px solid #4CAF50;
+    border: 1px solid var(--primary-color);
     outline: none;
 }
 
-/* Texte de l'input et du textarea */
-input,
-textarea {
-    color: #333;
-}
-
 button[type="submit"] {
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     padding: 12px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     font-size: 1.1rem;
-    transition: background-color 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color var(--transition-speed);
+    box-shadow: var(--box-shadow);
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: var(--secondary-color);
 }
 
 button[type="submit"]:active {
     background-color: #3e8e41;
-    /* Couleur un peu plus foncée lors du clic */
 }
 
 /* Pour un meilleur espacement entre le bouton et le reste du formulaire */

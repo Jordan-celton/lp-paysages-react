@@ -1,3 +1,15 @@
+/* Définition des variables CSS */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #388E3C;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --font-size: 1rem;
+    --font-size-large: 2rem;
+    --transition-speed: 0.3s;
+    --max-width-contact: 800px;
+}
+
 /* Réinitialisation de base */
 * {
     margin: 0;
@@ -14,7 +26,7 @@
 }
 
 #contact h2 {
-    font-size: 2rem;
+    font-size: var(--font-size-large);
     margin-bottom: 20px;
     color: #333;
 }
@@ -23,7 +35,7 @@
 #contact p {
     font-size: 1.1rem;
     color: #555;
-    max-width: 800px;
+    max-width: var(--max-width-contact);
     margin: 0 auto 20px;
     line-height: 1.6;
 }
@@ -32,8 +44,8 @@
 .contact-info {
     background: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     max-width: 600px;
     margin: 0 auto;
     text-align: left;
@@ -41,7 +53,7 @@
 
 .contact-info p {
     margin: 10px 0;
-    font-size: 1rem;
+    font-size: var(--font-size);
 }
 
 .contact-info strong {
@@ -50,14 +62,14 @@
 
 /* Liens (téléphone et email) */
 .contact-info a {
-    color: #4CAF50;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: color var(--transition-speed);
 }
 
 .contact-info a:hover {
-    color: #388E3C;
+    color: var(--secondary-color);
 }
 
 /* RESPONSIVE DESIGN */
