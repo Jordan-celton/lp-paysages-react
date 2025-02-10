@@ -52,7 +52,7 @@ const ImageModal = ({ images, selectedImageIndex, onClose }) => {
 
   return (
     <div
-      className="modal"
+      className="modalPages"
       aria-labelledby="image-modal"
       role="dialog"
       onClick={handleOverlayClick}
@@ -68,7 +68,7 @@ const ImageModal = ({ images, selectedImageIndex, onClose }) => {
         &#10094;
       </button>
       <img
-        className="modal-content"
+        className="modalPages-content"
         src={images[currentIndex]}
         alt={`Aperçu ${currentIndex + 1}`}
         aria-describedby="image-modal-description"

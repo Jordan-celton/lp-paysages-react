@@ -58,7 +58,7 @@ const Hero = () => {
           Transformez votre espace extérieur avec nos solutions paysagères sur
           mesure.
         </p>
-        <a href="#contact" className="cta-button">
+        <a href="#contact" className="cta-button-hero">
           Contactez-nous
         </a>
       </div>
