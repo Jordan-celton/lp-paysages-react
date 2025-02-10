@@ -8,15 +8,18 @@ const HeaderPages = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleNavigation = (hash) => {
-    // Navigate to the root, then scroll smoothly to the section
-    navigate("/");
-
-    const element = document.getElementById(hash);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (window.location.pathname === "/") {
+      // Si on est déjà sur la page d'accueil, on scrolle directement
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Si on est sur une autre page, on navigue vers "/" avec le hash en state
+      navigate("/", { state: { targetSection: hash } });
     }
 
-    setMenuOpen(false); // Fermer le menu après la navigation
+    setMenuOpen(false); // Fermer le menu après navigation
   };
 
   const toggleMenu = () => {

@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet-async";
 import HeaderPages from "../components/HeaderPages";
 import ImageModal from "../components/ImageModal";
 import Footer from "../components/Footer";
+import "../styles/Clotures.css";
 
-// Importation des images depuis 'src/assets/Clotûres/'
+// Importation des images
 import cloture1 from "../assets/Clotûres/cloture_1.webp";
 import cloture2 from "../assets/Clotûres/cloture_2.webp";
 import cloture3 from "../assets/Clotûres/cloture_3.webp";
@@ -14,7 +15,6 @@ import cloture6 from "../assets/Clotûres/cloture_6.webp";
 import cloture7 from "../assets/Clotûres/cloture_7.webp";
 import cloture8 from "../assets/Clotûres/cloture_8.webp";
 
-// Tableau des images importées
 const images = [
   cloture1,
   cloture2,
@@ -27,80 +27,68 @@ const images = [
 ];
 
 const Clotures = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
-  // Fonction pour ouvrir la modale
   const openModal = (index) => {
     setSelectedImageIndex(index);
-    setModalOpen(true);
   };
 
-  // Fonction pour fermer la modale
-  const closeModal = () => setModalOpen(false);
+  const closeModal = () => {
+    setSelectedImageIndex(null);
+  };
 
-  // Fermeture de la modale avec la touche Escape
   useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
         closeModal();
       }
     };
 
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
-
-  // Fermeture de la modale lorsque l'on clique en dehors de celle-ci
-  const handleClickOutside = (e) => {
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  };
 
   return (
     <div>
       <Helmet>
-        <title>Clôtures | LP Paysages</title>
+        <title>Clôtures sur mesure | LP Paysages</title>
         <meta
           name="description"
-          content="Découvrez nos réalisations de clôtures autour de Quimper. LP Paysages vous accompagne pour délimiter et sécuriser vos espaces extérieurs."
+          content="Découvrez nos réalisations de clôtures pour sécuriser et embellir vos extérieurs autour de Quimper. LP Paysages vous accompagne dans votre projet."
         />
         <meta
           name="keywords"
-          content="clôtures, paysagiste, aménagement extérieur, Quimper, jardin"
+          content="clôture bois, clôture métal, aménagement extérieur, paysagiste, Quimper"
         />
-        <meta property="og:title" content="Clôtures | LP Paysages" />
+        <meta property="og:title" content="Clôtures sur mesure | LP Paysages" />
         <meta
           property="og:description"
-          content="Quelques exemples de clôtures réalisées par LP Paysages."
+          content="Nos réalisations de clôtures pour protéger et structurer vos espaces extérieurs à Quimper et ses environs."
         />
         <meta property="og:image" content={cloture1} />
         <meta property="og:url" content="https://www.lppaysages.com/clotures" />
         <meta name="twitter:card" content="summary_large_image" />
-        {/* Préchargement des images importantes */}
         <link rel="preload" href={cloture1} as="image" />
-        <link rel="preload" href={cloture2} as="image" />
-        <link rel="preload" href={cloture3} as="image" />
       </Helmet>
 
       <HeaderPages />
       <main>
-        <section id="intro">
-          <h1>LP Paysages - Clôtures</h1>
+        <section>
+          <h1>LP Paysages</h1>
           <p>
-            Voici quelques réalisations de clôtures faites autour de Quimper.
+            Découvrez nos réalisations de clôtures en bois et en métal autour de
+            Quimper. Sécurisez et embellissez vos extérieurs avec LP Paysages.
           </p>
         </section>
 
-        <section id="clotures">
-          <h2>Nos Clôtures Réalisées</h2>
+        <section>
+          <h2>Nos réalisations de clôtures</h2>
           <div className="grid-container">
-            {images.map((src, index) => (
+            {images.map((image, index) => (
               <div key={index} className="grid-item">
                 <img
-                  src={src}
-                  alt={`Clôture réalisée ${index + 1}`}
+                  src={image}
+                  alt={`Clôture ${index + 1}`}
                   loading="lazy"
                   onClick={() => openModal(index)}
                   onKeyDown={(e) => e.key === "Enter" && openModal(index)}
@@ -115,33 +103,15 @@ const Clotures = () => {
         </section>
       </main>
 
-      {modalOpen && (
-        <div
-          className="modal"
-          role="dialog"
-          aria-labelledby="modal-title"
-          aria-hidden={!modalOpen}
-          onClick={handleClickOutside}
-        >
-          <div className="modal-content" aria-describedby="modal-description">
-            <button
-              className="close"
-              onClick={closeModal}
-              aria-label="Fermer la modale"
-            >
-              &times;
-            </button>
-            <h2 id="modal-title">Clôture {selectedImageIndex + 1}</h2>
-            <ImageModal
-              images={images}
-              selectedImageIndex={selectedImageIndex}
-              onClose={closeModal}
-            />
-          </div>
-        </div>
-      )}
-
       <Footer />
+
+      {selectedImageIndex !== null && (
+        <ImageModal
+          images={images}
+          selectedImageIndex={selectedImageIndex}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 };
