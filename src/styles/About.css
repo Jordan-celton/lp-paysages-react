@@ -54,7 +54,7 @@
 
 /* Bouton demande de devis */
 .devis {
-    background-color: var(--primary-color);
+    background-color: #ff5c5c;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -62,10 +62,6 @@
     cursor: pointer;
     font-size: var(--font-size);
     transition: background-color var(--transition-speed);
-}
-
-.devis:hover {
-    background-color: var(--secondary-color);
 }
 
 /* MODAL */
@@ -165,7 +161,7 @@ textarea:focus {
 }
 
 button[type="submit"] {
-    background-color: var(--primary-color);
+    background-color: #ff5c5c;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -174,14 +170,6 @@ button[type="submit"] {
     font-size: 1.1rem;
     transition: background-color var(--transition-speed);
     box-shadow: var(--box-shadow);
-}
-
-button[type="submit"]:hover {
-    background-color: var(--secondary-color);
-}
-
-button[type="submit"]:active {
-    background-color: #3e8e41;
 }
 
 /* Pour un meilleur espacement entre le bouton et le reste du formulaire */

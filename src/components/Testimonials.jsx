@@ -80,7 +80,7 @@ const Testimonials = () => {
       <div
         className="swiper-button-next"
         aria-label="Suivant"
-        tabIndex="0" // Assurer la navigation clavier
+        tabIndex="0"
       ></div>
     </section>
   );

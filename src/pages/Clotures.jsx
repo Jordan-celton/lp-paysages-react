@@ -28,6 +28,12 @@ const images = [
 
 const Clotures = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
   const openModal = (index) => {
     setSelectedImageIndex(index);
@@ -48,6 +54,16 @@ const Clotures = () => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <div>
       <Helmet>
@@ -56,19 +72,6 @@ const Clotures = () => {
           name="description"
           content="Découvrez nos réalisations de clôtures pour sécuriser et embellir vos extérieurs autour de Quimper. LP Paysages vous accompagne dans votre projet."
         />
-        <meta
-          name="keywords"
-          content="clôture bois, clôture métal, aménagement extérieur, paysagiste, Quimper"
-        />
-        <meta property="og:title" content="Clôtures sur mesure | LP Paysages" />
-        <meta
-          property="og:description"
-          content="Nos réalisations de clôtures pour protéger et structurer vos espaces extérieurs à Quimper et ses environs."
-        />
-        <meta property="og:image" content={cloture1} />
-        <meta property="og:url" content="https://www.lppaysages.com/clotures" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="preload" href={cloture1} as="image" />
       </Helmet>
 
       <HeaderPages />
@@ -77,7 +80,7 @@ const Clotures = () => {
           <h1>LP Paysages</h1>
           <p>
             Découvrez nos réalisations de clôtures en bois et en métal autour de
-            Quimper. Sécurisez et embellissez vos extérieurs avec LP Paysages.
+            Quimper.
           </p>
         </section>
 
@@ -100,6 +103,46 @@ const Clotures = () => {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="devis">
+          <h2>Demande de devis</h2>
+          {submitted ? (
+            <p>Merci pour votre demande ! Nous vous contacterons bientôt.</p>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <label>
+                Nom:
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Email:
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Message:
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+              </label>
+              <button type="submit">Envoyer</button>
+            </form>
+          )}
         </section>
       </main>
 

@@ -26,6 +26,12 @@ const images = [
 
 const Exterieur = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
   const openModal = (index) => {
     setSelectedImageIndex(index);
@@ -46,6 +52,16 @@ const Exterieur = () => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <div>
       <Helmet>
@@ -54,25 +70,6 @@ const Exterieur = () => {
           name="description"
           content="Découvrez nos réalisations d'aménagements extérieurs autour de Quimper. LP Paysages vous accompagne pour créer votre espace extérieur idéal."
         />
-        <meta
-          name="keywords"
-          content="aménagement extérieur, paysagiste, jardin, Quimper, espace vert"
-        />
-        <meta
-          property="og:title"
-          content="Aménagement extérieur | LP Paysages"
-        />
-        <meta
-          property="og:description"
-          content="Découvrez quelques-uns de nos projets d'aménagements extérieurs réalisés à Quimper et ses environs."
-        />
-        <meta property="og:image" content={amenagement1} />
-        <meta
-          property="og:url"
-          content="https://www.lppaysages.com/amenagement-exterieur"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="preload" href={amenagement1} as="image" />
       </Helmet>
 
       <HeaderPages />
@@ -103,6 +100,46 @@ const Exterieur = () => {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="devis">
+          <h2>Demande de devis</h2>
+          {submitted ? (
+            <p>Merci pour votre demande ! Nous vous contacterons bientôt.</p>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <label>
+                Nom:
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Email:
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Message:
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+              </label>
+              <button type="submit">Envoyer</button>
+            </form>
+          )}
         </section>
       </main>
 

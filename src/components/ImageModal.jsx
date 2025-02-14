@@ -69,7 +69,7 @@ const ImageModal = ({ images, selectedImageIndex, onClose }) => {
       </button>
       <img
         className="modalPages-content"
-        src={images[currentIndex]}
+        src={images[currentIndex]} // Accès correct à l'image
         alt={`Aperçu ${currentIndex + 1}`}
         aria-describedby="image-modal-description"
       />
@@ -79,7 +79,7 @@ const ImageModal = ({ images, selectedImageIndex, onClose }) => {
 
       {/* Annonce de l'image actuelle pour les utilisateurs de lecteurs d'écran */}
       <div id="image-modal-description" className="sr-only">
-        Image {currentIndex + 1} sur {images.length}
+        {images[currentIndex].description}
       </div>
     </div>
   );

@@ -19,6 +19,12 @@ const images = [mur1, mur2, mur3, mur4, mur5, mur6, mur7, mur8];
 
 const Maconnerie = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
   const openModal = (index) => {
     setSelectedImageIndex(index);
@@ -39,6 +45,16 @@ const Maconnerie = () => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <div>
       <Helmet>
@@ -47,25 +63,6 @@ const Maconnerie = () => {
           name="description"
           content="Découvrez nos réalisations en maçonnerie paysagère à Quimper et ses environs. LP Paysages conçoit vos murs et aménagements extérieurs en pierre et béton."
         />
-        <meta
-          name="keywords"
-          content="maçonnerie paysagère, mur en pierre, mur de soutènement, paysagiste, Quimper"
-        />
-        <meta
-          property="og:title"
-          content="Maçonnerie Paysagère | LP Paysages"
-        />
-        <meta
-          property="og:description"
-          content="Découvrez quelques réalisations de maçonnerie paysagère autour de Quimper."
-        />
-        <meta property="og:image" content={mur1} />
-        <meta
-          property="og:url"
-          content="https://www.lppaysages.com/maconnerie"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="preload" href={mur1} as="image" />
       </Helmet>
 
       <HeaderPages />
@@ -97,6 +94,46 @@ const Maconnerie = () => {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="devis">
+          <h2>Demande de devis</h2>
+          {submitted ? (
+            <p>Merci pour votre demande ! Nous vous contacterons bientôt.</p>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <label>
+                Nom:
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Email:
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Message:
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+              </label>
+              <button type="submit">Envoyer</button>
+            </form>
+          )}
         </section>
       </main>
 

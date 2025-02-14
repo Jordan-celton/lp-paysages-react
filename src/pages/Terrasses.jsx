@@ -26,6 +26,12 @@ const images = [
 
 const Terrasses = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
   const openModal = (index) => {
     setSelectedImageIndex(index);
@@ -46,6 +52,17 @@ const Terrasses = () => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulation de soumission de formulaire
+    setSubmitted(true);
+  };
+
   return (
     <div>
       <Helmet>
@@ -54,25 +71,6 @@ const Terrasses = () => {
           name="description"
           content="Découvrez nos réalisations de terrasses en bois et en pierre autour de Quimper. LP Paysages vous accompagne pour concevoir votre terrasse idéale."
         />
-        <meta
-          name="keywords"
-          content="terrasse bois, terrasse pierre, aménagement extérieur, paysagiste, Quimper"
-        />
-        <meta
-          property="og:title"
-          content="Terrasses sur mesure | LP Paysages"
-        />
-        <meta
-          property="og:description"
-          content="Nos réalisations de terrasses en bois et en pierre à Quimper et ses environs."
-        />
-        <meta property="og:image" content={terrasse1} />
-        <meta
-          property="og:url"
-          content="https://www.lppaysages.com/terrasses"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="preload" href={terrasse1} as="image" />
       </Helmet>
 
       <HeaderPages />
@@ -96,7 +94,6 @@ const Terrasses = () => {
                   alt={`Terrasse ${index + 1}`}
                   loading="lazy"
                   onClick={() => openModal(index)}
-                  onKeyDown={(e) => e.key === "Enter" && openModal(index)}
                   role="button"
                   tabIndex="0"
                   aria-label={`Agrandir l'image de la terrasse ${index + 1}`}
@@ -105,6 +102,46 @@ const Terrasses = () => {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="devis">
+          <h2>Demande de devis</h2>
+          {submitted ? (
+            <p>Merci pour votre demande ! Nous vous contacterons bientôt.</p>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <label>
+                Nom:
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Email:
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Message:
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+              </label>
+              <button type="submit">Envoyer</button>
+            </form>
+          )}
         </section>
       </main>
 
