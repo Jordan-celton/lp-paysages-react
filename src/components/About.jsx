@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import "aos/dist/aos.css";
 import "../styles/About.css";
 
 const About = ({ setModalOpen }) => {
