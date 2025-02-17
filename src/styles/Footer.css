@@ -1,23 +1,9 @@
-/* Définition des variables CSS */
-:root {
-    --primary-color: #333;
-    --hover-color: #4CAF50;
-    --footer-padding: 20px 10px;
-    --font-size-base: 1rem;
-    --font-size-large: 1.1rem;
-    --font-size-icons: 1.5rem;
-    --font-size-icons-mobile: 1.8rem;
-    --transition-speed: 0.3s;
-    --transform-speed: 0.2s;
-    --gap: 15px;
-}
-
 /* Footer global */
 footer {
-    background-color: var(--primary-color);
+    background-color: #333;
     color: white;
     text-align: center;
-    padding: var(--footer-padding);
+    padding: 20px 10px;
     position: relative;
     width: 100%;
     box-sizing: border-box;
@@ -28,21 +14,21 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--gap);
+    gap: 15px;
 }
 
 /* Texte du footer */
 .footer-content p {
-    font-size: var(--font-size-base);
+    font-size: 1rem;
 }
 
 /* Icônes sociales */
 .socials {
     list-style: none;
     display: flex;
-    gap: var(--gap);
     padding: 0;
     margin: 0;
+    gap: 10px;
 }
 
 .socials li {
@@ -51,13 +37,13 @@ footer {
 
 .socials a {
     color: white;
-    font-size: var(--font-size-icons);
-    transition: color var(--transition-speed), transform var(--transform-speed);
+    font-size: 1.5rem;
+    transition: color 0.3s, transform 0.2s;
 }
 
 /* Effet au survol des icônes */
 .socials a:hover {
-    color: var(--hover-color);
+    color: #e04b4b;
     transform: scale(1.1);
 }
 
@@ -81,7 +67,7 @@ footer {
     }
 
     .footer-content p {
-        font-size: var(--font-size-large);
+        font-size: 1.1rem;
     }
 
     .socials a {
@@ -97,7 +83,7 @@ footer {
     }
 
     .socials a {
-        font-size: var(--font-size-icons-mobile);
+        font-size: 1.8rem;
     }
 }
 

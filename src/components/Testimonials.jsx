@@ -72,7 +72,7 @@ const Testimonials = () => {
         </Swiper>
       </div>
 
-      <div
+      {/* <div
         className="swiper-button-prev"
         aria-label="Précédent"
         tabIndex="0" // Assurer la navigation clavier
@@ -81,7 +81,7 @@ const Testimonials = () => {
         className="swiper-button-next"
         aria-label="Suivant"
         tabIndex="0"
-      ></div>
+      ></div> */}
     </section>
   );
 };

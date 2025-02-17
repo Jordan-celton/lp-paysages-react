@@ -3,6 +3,16 @@
   position: relative;
   overflow: hidden;
   height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Swiper container */
@@ -26,7 +36,6 @@
   height: 100vh;
   object-fit: cover;
   opacity: 1;
-
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -73,7 +82,7 @@
 }
 
 .cta-button-hero:hover {
-  background-color: #388e3c;
+  background-color: #ff5c5c;
 }
 
 /* Responsivité */

@@ -1,5 +1,5 @@
 #temoignages {
-    background-color: #ff5c5cb1;
+    background-color: wheat;
 }
 
 /* Conteneur du carrousel */
@@ -20,9 +20,6 @@
     transition: transform 0.3s ease;
 }
 
-.carousel-item:hover {
-    transform: translateY(-10px);
-}
 
 /* Style du texte du témoignage */
 .review-text {
@@ -43,7 +40,7 @@
 
 /* Style de la pagination */
 .swiper-pagination-bullet {
-    background-color: wheat;
+    background-color: brown;
     opacity: 1;
     transition: background-color 0.3s ease;
 }
@@ -72,35 +69,5 @@
 
     .review-author {
         font-size: 1rem;
-    }
-}
-
-/* Boutons de navigation (précédent et suivant) */
-.swiper-button-next,
-.swiper-button-prev {
-    color: #333;
-    color: #ff5c5c !important;
-    border-radius: 50%;
-    padding: 10px;
-    font-size: 2rem;
-    transition: background-color 0.3s ease;
-    z-index: 10;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background-color: #ff5c5c;
-    /* Changer la couleur au survol */
-    color: white;
-}
-
-/* Pour améliorer la visibilité des boutons sur les petits écrans */
-@media (max-width: 480px) {
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        font-size: 1.5rem;
-        /* Réduire la taille des icônes pour qu'elles soient mieux ajustées */
-        padding: 8px;
     }
 }

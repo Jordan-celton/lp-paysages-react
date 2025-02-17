@@ -102,7 +102,7 @@ const Exterieur = () => {
           </div>
         </section>
 
-        <section className="devis">
+        <section className="devisPage">
           <h2>Demande de devis</h2>
           {submitted ? (
             <p>Merci pour votre demande ! Nous vous contacterons bientôt.</p>

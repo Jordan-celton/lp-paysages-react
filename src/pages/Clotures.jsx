@@ -105,12 +105,12 @@ const Clotures = () => {
           </div>
         </section>
 
-        <section className="devis">
+        <section className="devisPage">
           <h2>Demande de devis</h2>
           {submitted ? (
             <p>Merci pour votre demande ! Nous vous contacterons bientôt.</p>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form className="formPage" onSubmit={handleSubmit}>
               <label>
                 Nom:
                 <input
