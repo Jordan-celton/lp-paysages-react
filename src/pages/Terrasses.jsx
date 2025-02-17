@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import HeaderPages from "../components/HeaderPages";
 import ImageModal from "../components/ImageModal";
-import "../styles/Terrasses.css";
+import "../styles/Pages.css";
 import Footer from "../components/Footer";
 
 // Importation des images

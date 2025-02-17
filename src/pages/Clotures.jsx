@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import HeaderPages from "../components/HeaderPages";
 import ImageModal from "../components/ImageModal";
 import Footer from "../components/Footer";
-import "../styles/Clotures.css";
+import "../styles/Pages.css";
 
 // Importation des images
 import cloture1 from "../assets/Clotûres/cloture_1.webp";

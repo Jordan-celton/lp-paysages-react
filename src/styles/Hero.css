@@ -72,7 +72,7 @@
 }
 
 .cta-button-hero {
-  background-color: brown;
+  background-color: #ff5c5c;
   color: white;
   padding: 15px 30px;
   font-size: 1.1rem;
@@ -82,7 +82,7 @@
 }
 
 .cta-button-hero:hover {
-  background-color: #ff5c5c;
+  background-color: brown;
 }
 
 /* Responsivité */
