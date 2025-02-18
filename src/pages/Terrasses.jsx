@@ -84,6 +84,46 @@ const Terrasses = () => {
           </p>
         </section>
 
+        {/* Section Nos services */}
+        <section>
+          <h2>Nos services</h2>
+          <p>
+            Chez LP Paysages, nous proposons des services sur mesure pour créer
+            la terrasse idéale pour votre extérieur. Nous utilisons des
+            matériaux de qualité pour concevoir des espaces conviviaux et
+            durables.
+          </p>
+          <div className="services-container">
+            <div className="service-item">
+              <h3>Terrasses en bois</h3>
+              <img src={terrasse1} alt="Terrasse en bois" />
+              <p>
+                Profitez d’une terrasse en bois, idéale pour un aspect naturel
+                et chaleureux. Nos terrasses en bois sont conçues pour durer
+                tout en étant esthétiques et pratiques.
+              </p>
+            </div>
+            <div className="service-item">
+              <h3>Terrasses en pierre</h3>
+              <img src={terrasse3} alt="Terrasse en pierre" />
+              <p>
+                Choisissez une terrasse en pierre pour une solution robuste et
+                élégante. Ce matériau apporte une touche de raffinement à votre
+                espace extérieur.
+              </p>
+            </div>
+            <div className="service-item">
+              <h3>Terrasses personnalisées</h3>
+              <img src={terrasse2} alt="Terrasse personnalisée" />
+              <p>
+                Chaque projet est unique ! Nous vous accompagnons dans la
+                création d’une terrasse qui correspond à vos goûts et à votre
+                espace.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section>
           <h2>Nos réalisations de terrasses</h2>
           <div className="grid-container">

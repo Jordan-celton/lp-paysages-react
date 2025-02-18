@@ -79,6 +79,49 @@ const Exterieur = () => {
           <p>Voici quelques réalisations faites autour de Quimper.</p>
         </section>
 
+        {/* Section Nos services */}
+        <section>
+          <h2>Nos services</h2>
+          <p>
+            Chez LP Paysages, nous proposons des aménagements extérieurs adaptés
+            à vos besoins spécifiques. Que vous recherchiez un jardin paysager,
+            une terrasse en bois ou un espace extérieur personnalisé, nous avons
+            la solution idéale pour vous.
+          </p>
+          <div className="services-container">
+            <div className="service-item">
+              <h3>Aménagement paysager</h3>
+              <img src={amenagement1} alt="Aménagement paysager" />
+              <p>
+                Nous créons des jardins esthétiques et fonctionnels, en
+                choisissant des plantes et des matériaux adaptés à votre
+                environnement. Notre objectif est de transformer votre extérieur
+                en un lieu agréable et harmonieux.
+              </p>
+            </div>
+            <div className="service-item">
+              <h3>Terrasses en bois</h3>
+              <img src={amenagement2} alt="Terrasse en bois" />
+              <p>
+                Offrez à votre extérieur une terrasse en bois élégante et
+                durable. Nous vous proposons des solutions sur mesure pour créer
+                un espace de détente idéal, en utilisant des matériaux de
+                qualité.
+              </p>
+            </div>
+            <div className="service-item">
+              <h3>Aménagement sur mesure</h3>
+              <img src={amenagement3} alt="Aménagement sur mesure" />
+              <p>
+                Chaque projet est unique, et nous nous adaptons à vos besoins
+                spécifiques pour concevoir des aménagements sur mesure. Que ce
+                soit pour des allées, des jardins zen ou des espaces de jeux,
+                nous créons l&apos;aménagement parfait pour votre terrain.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section>
           <h2>Aménagements extérieurs</h2>
           <div className="grid-container">
@@ -107,7 +150,7 @@ const Exterieur = () => {
           {submitted ? (
             <p>Merci pour votre demande ! Nous vous contacterons bientôt.</p>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form className="formPage" onSubmit={handleSubmit}>
               <label>
                 Nom:
                 <input

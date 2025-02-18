@@ -85,6 +85,52 @@ const Clotures = () => {
         </section>
 
         <section>
+          <h2>Nos services</h2>
+          <p>
+            Chez LP Paysages, nous proposons différents types de clôtures
+            adaptées à vos besoins spécifiques. Que vous cherchiez une solution
+            esthétique pour votre jardin ou une option plus sécuritaire pour
+            délimiter votre propriété, nous avons la solution parfaite pour
+            vous.
+          </p>
+          <div className="services-container">
+            <div className="service-item">
+              <h3>Clôtures en bois</h3>
+              <img src={cloture1} alt="Clôture en bois" />
+              <p>
+                Les clôtures en bois sont une excellente option pour créer une
+                ambiance naturelle et chaleureuse dans votre jardin. Elles sont
+                durables, esthétiques et s’adaptent parfaitement à tout type de
+                terrain. Vous pouvez les personnaliser en fonction de vos
+                préférences et de l’esthétique de votre extérieur.
+              </p>
+            </div>
+            <div className="service-item">
+              <h3>Clôtures en métal</h3>
+              <img src={cloture2} alt="Clôture en métal" />
+              <p>
+                Les clôtures en métal offrent une sécurité accrue tout en
+                apportant une touche moderne à votre propriété. Résistantes aux
+                intempéries et aux nuisances extérieures, elles nécessitent peu
+                d&apos;entretien et sont idéales pour les terrains nécessitant
+                une délimitation robuste.
+              </p>
+            </div>
+            <div className="service-item">
+              <h3>Clôtures personnalisées</h3>
+              <img src={cloture3} alt="Clôture personnalisée" />
+              <p>
+                Si vous avez des besoins spécifiques en termes de design ou de
+                dimension, nous proposons des clôtures sur mesure. Que ce soit
+                en bois, en métal, ou une combinaison des deux, nous pouvons
+                créer une clôture qui s&apos;adapte parfaitement à votre
+                environnement et à vos attentes.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
           <h2>Nos réalisations de clôtures</h2>
           <div className="grid-container">
             {images.map((image, index) => (

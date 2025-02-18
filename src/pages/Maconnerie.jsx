@@ -75,6 +75,46 @@ const Maconnerie = () => {
           </p>
         </section>
 
+        {/* Section Nos services */}
+        <section>
+          <h2>Nos services</h2>
+          <p>
+            Chez LP Paysages, nous proposons des services spécialisés en
+            maçonnerie paysagère pour donner forme à vos projets extérieurs. Que
+            ce soit pour la construction de murs, d’enceintes, ou d’aménagements
+            personnalisés, nous mettons notre savoir-faire à votre disposition.
+          </p>
+          <div className="services-container">
+            <div className="service-item">
+              <h3>Murs en pierre</h3>
+              <img src={mur1} alt="Mur en pierre" />
+              <p>
+                Nous créons des murs en pierre naturelle pour ajouter du
+                caractère et de la solidité à vos espaces extérieurs. Ces murs
+                offrent une excellente résistance aux intempéries.
+              </p>
+            </div>
+            <div className="service-item">
+              <h3>Murs en béton</h3>
+              <img src={mur2} alt="Mur en béton" />
+              <p>
+                Offrez à votre jardin ou terrasse une touche moderne avec nos
+                murs en béton, robustes et élégants, adaptés à vos besoins
+                spécifiques.
+              </p>
+            </div>
+            <div className="service-item">
+              <h3>Aménagements extérieurs </h3>
+              <img src={mur3} alt="Aménagement extérieur" />
+              <p>
+                Tous nos projets sont personnalisés en fonction de vos envies.
+                Nous vous proposons des aménagements extérieurs uniques et
+                adaptés à vos goûts.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section>
           <h2>Nos réalisations en maçonnerie</h2>
           <div className="grid-container">
