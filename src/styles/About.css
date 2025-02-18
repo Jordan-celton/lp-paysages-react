@@ -65,6 +65,8 @@
     justify-content: center;
     z-index: 9999;
     animation: fadeIn 0.3s ease-in-out;
+    will-change: opacity;
+    /* Optimisation pour la performance */
 }
 
 /* Animation pour l’apparition de la modale */
@@ -92,12 +94,14 @@
     overflow-y: auto;
     max-height: 90vh;
     animation: slideIn 0.3s ease-out;
+    will-change: transform, opacity;
+    /* Optimisation pour la performance */
 }
 
 /* Animation de l'apparition du contenu de la modale */
 @keyframes slideIn {
     0% {
-        transform: translateY(-50px);
+        transform: translateY(10px);
         opacity: 0;
     }
 
@@ -158,11 +162,12 @@ button[type="submit"] {
     font-size: 1.1rem;
     transition: background-color 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-/* Pour un meilleur espacement entre le bouton et le reste du formulaire */
-button[type="submit"] {
-    margin-top: 20px;
+button[type="submit"]:hover {
+    background-color: #e74c3c;
+    /* Effet au survol */
 }
 
 /* MOBILE (petits écrans) */
@@ -170,6 +175,8 @@ button[type="submit"] {
     .modal-content {
         width: 95%;
         padding: 20px;
+        box-shadow: none;
+        /* Désactiver la shadow pour de meilleures performances */
     }
 
     .close {

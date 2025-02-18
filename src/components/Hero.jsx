@@ -8,16 +8,39 @@ import ImageHero1 from "../assets/Aménagement extérieur/amenagement-1.webp";
 import ImageHero2 from "../assets/Clotûres/cloture_1.webp";
 import ImageHero3 from "../assets/Murs/mur-1.webp";
 
+// Ajout de préchargement des images principales
 const Hero = () => {
   return (
     <section id="accueil">
+      <link
+        rel="preload"
+        href={ImageHero1}
+        as="image"
+        type="image/webp"
+        media="(min-width: 768px)"
+      />
+      <link
+        rel="preload"
+        href={ImageHero2}
+        as="image"
+        type="image/webp"
+        media="(min-width: 768px)"
+      />
+      <link
+        rel="preload"
+        href={ImageHero3}
+        as="image"
+        type="image/webp"
+        media="(min-width: 768px)"
+      />
+
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={50}
+        spaceBetween={10} // Réduit l'espace entre les slides pour une expérience plus fluide
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }} // Légèrement plus lent
         loop={true}
         lazyPreloadPrevNext={1}
         initialSlide={0}

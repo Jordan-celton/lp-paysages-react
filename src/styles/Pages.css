@@ -1,4 +1,4 @@
-/* Style global de la page */
+/* Style de base pour la page */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -17,7 +17,7 @@ a {
     color: inherit;
 }
 
-/* Section principal (titre et description) */
+/* Section principale (titre et description) */
 section {
     padding: 20px;
     margin: 20px 0;
@@ -56,8 +56,17 @@ section p {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    /* border-radius: 8px; */
     transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Effet d'ombre sur hover */
+}
+
+.service-item img:hover {
+    transform: scale(1.1);
 }
 
 .service-item h3 {
@@ -71,16 +80,7 @@ section p {
     color: #666;
 }
 
-/* Effet hover sur les items de service
-.service-item:hover {
-    transform: scale(1.05);
-}
-
-.service-item img:hover {
-    transform: scale(1.1);
-} */
-
-/* Grid pour les images */
+/* Grille d'images */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -129,6 +129,12 @@ section p {
     max-width: 90%;
     max-height: 90%;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.modal-overlay.active .modal-content {
+    opacity: 1;
 }
 
 .modal-content img {

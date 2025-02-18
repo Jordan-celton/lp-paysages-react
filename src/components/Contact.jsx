@@ -8,6 +8,7 @@ const Contact = () => {
         Pour toute demande de renseignements ou de devis, veuillez utiliser les
         informations ci-dessous :
       </p>
+
       <div className="contact-info">
         <address>
           <p>
@@ -15,7 +16,11 @@ const Contact = () => {
           </p>
           <p>
             <strong>Téléphone :</strong>{" "}
-            <a href="tel:0633272041" aria-label="Appeler le 06 33 27 20 41">
+            <a
+              href="tel:0633272041"
+              aria-label="Appeler le 06 33 27 20 41"
+              role="link"
+            >
               06 33 27 20 41
             </a>
           </p>
@@ -24,6 +29,7 @@ const Contact = () => {
             <a
               href="mailto:perennecludovic@gmail.com"
               aria-label="Envoyer un email à perennecludovic@gmail.com"
+              role="link"
             >
               perennecludovic@gmail.com
             </a>

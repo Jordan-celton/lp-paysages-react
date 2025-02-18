@@ -1,24 +1,33 @@
+import React, { useState, useCallback } from "react";
 import { Link } from "react-scroll";
-import { useState, useCallback } from "react";
 import "../styles/Header.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.png"; // Assurez-vous d'utiliser un logo optimisé en .webp
 
-// Utilisation de useCallback pour éviter la recréation des fonctions à chaque render
-const Header = () => {
+// Utilisation de React.memo pour éviter le rendu inutile
+const Header = React.memo(function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Fonction de toggle pour le menu burger
   const toggleMenu = useCallback(() => {
     setMenuOpen((prevMenuOpen) => !prevMenuOpen);
   }, []);
 
+  // Fonction pour fermer le menu
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
   }, []);
 
   return (
     <header>
-      <img className="logo" src={logo} alt="Logo LP Paysages" />
+      {/* Logo avec lazy loading */}
+      <img
+        className="logo"
+        src={logo}
+        alt="Logo LP Paysages"
+        loading="lazy" // Optimisation du chargement de l'image
+      />
 
+      {/* Navigation principale */}
       <div className="nav-container">
         <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
           <ul>
@@ -72,6 +81,7 @@ const Header = () => {
         </nav>
       </div>
 
+      {/* Menu Burger (Mobile) */}
       <div
         className="burger"
         onClick={toggleMenu}
@@ -87,6 +97,6 @@ const Header = () => {
       </div>
     </header>
   );
-};
+});
 
 export default Header;

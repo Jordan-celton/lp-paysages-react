@@ -20,9 +20,7 @@ const ScrollToSection = () => {
     if (location.state?.targetSection) {
       const element = document.getElementById(location.state.targetSection);
       if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   }, [location]);

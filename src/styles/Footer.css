@@ -5,7 +5,6 @@ footer {
     text-align: center;
     padding: 20px 10px;
     position: relative;
-    width: 100%;
     box-sizing: border-box;
 }
 
@@ -20,6 +19,7 @@ footer {
 /* Texte du footer */
 .footer-content p {
     font-size: 1rem;
+    margin: 0;
 }
 
 /* Icônes sociales */
@@ -53,7 +53,7 @@ footer {
 @media (min-width: 768px) {
     .footer-content {
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         max-width: 90%;
         margin: 0 auto;
         padding: 10px;
@@ -79,11 +79,12 @@ footer {
 @media (max-width: 767px) {
     .footer-content {
         gap: 15px;
-        padding: 20px;
+        padding: 15px;
     }
 
     .socials a {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        /* Ajustement de la taille sur les petits écrans */
     }
 }
 
@@ -91,6 +92,7 @@ footer {
 .main-content {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    min-height: 100vh;
+    /* Utilisation de min-height 100vh pour que la page occupe toute la hauteur */
     justify-content: space-between;
 }

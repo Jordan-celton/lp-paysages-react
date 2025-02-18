@@ -40,6 +40,11 @@
     object-fit: cover;
 }
 
+/* Effet de survol sur l'image */
+.card:hover img {
+    transform: scale(1.05);
+}
+
 /* Contenu de la carte */
 .card-content {
     padding: 15px;
@@ -104,12 +109,16 @@
         grid-template-columns: 1fr;
         gap: 15px;
         width: 100%;
+        padding: 0 15px;
+        /* Ajout d'un peu de padding sur les côtés */
     }
 
     .card {
         width: 100%;
         max-width: 280px;
         box-sizing: border-box;
+        margin: 0 auto;
+        /* Centrer les cartes */
     }
 
     .card img {

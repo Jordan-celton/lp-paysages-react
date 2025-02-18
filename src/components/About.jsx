@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
+import { useCallback } from "react";
 import "../styles/About.css";
 
 const About = ({ setModalOpen }) => {
+  // Utilisation de useCallback pour éviter la recréation de la fonction à chaque rendu
+  const handleDevisClick = useCallback(() => {
+    setModalOpen(true);
+  }, [setModalOpen]);
+
   return (
     <section id="a-propos" data-aos="fade-up">
       <h2>À Propos</h2>
@@ -23,7 +29,7 @@ const About = ({ setModalOpen }) => {
 
         <button
           className="devis"
-          onClick={() => setModalOpen(true)}
+          onClick={handleDevisClick} // Appel à la fonction avec useCallback
           aria-label="Demander un devis"
         >
           Demande de devis

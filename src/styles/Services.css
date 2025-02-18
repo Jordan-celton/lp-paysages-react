@@ -41,8 +41,8 @@ h2 {
 }
 
 .service:hover i {
-    transform: scale(1.1);
-    /* Effet d'agrandissement au survol */
+    transform: scale(1.15);
+    /* Effet plus fluide */
 }
 
 /* Titre de service */
@@ -55,7 +55,8 @@ h2 {
 .service p {
     font-size: 1rem;
     color: #666;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    /* Espacement supplémentaire */
 }
 
 /* Adaptation pour tablettes (768px) */
@@ -63,7 +64,7 @@ h2 {
     .service-container {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 20px;
-        /* Réduire l'écart entre les services sur les petits écrans */
+        /* Réduire l'écart entre les services */
     }
 
     .service i {
@@ -84,11 +85,20 @@ h2 {
     .service-container {
         grid-template-columns: 1fr;
         gap: 20px;
-        /* Espacement réduit */
+        padding: 0 15px;
+        /* Espacement réduit pour les petits écrans */
     }
 
     .service {
         padding: 20px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        /* Ombre plus douce */
+    }
+
+    .service:hover {
+        transform: translateY(-5px);
+        /* Effet plus subtil */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .service i {

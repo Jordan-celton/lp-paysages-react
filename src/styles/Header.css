@@ -1,6 +1,7 @@
 /* Styles généraux du header */
 header {
-    background-color: white;
+    background-color: #333;
+    /* Changement de couleur de fond pour améliorer la lisibilité */
     color: white;
     display: flex;
     justify-content: space-between;
@@ -9,12 +10,15 @@ header {
     z-index: 1000;
     padding: 10px 5%;
     height: 70px;
+    width: auto;
 }
 
 /* Logotype */
 .logo {
-    max-height: 120px;
-    max-width: 100px;
+    max-height: 100px;
+    /* Ajustement pour la taille du logo */
+    max-width: 90px;
+    /* Réduit un peu la largeur du logo pour plus de fluidité */
     object-fit: contain;
 }
 
@@ -49,7 +53,6 @@ nav ul {
     color: white;
     text-decoration: none;
     font-size: 1rem;
-    /* Légère réduction */
     display: flex;
     align-items: center;
     gap: 8px;
@@ -72,13 +75,18 @@ nav ul {
 .burger div {
     width: 30px;
     height: 3px;
-    background-color: bisque;
+    background-color: #ff5c5c;
+    /* Changement de couleur pour mieux se démarquer */
     border-radius: 5px;
     transition: all 0.3s ease;
 }
 
 /* --- Responsive Design --- */
 @media (max-width: 1024px) {
+    header {
+        padding: 10px 2%;
+        width: auto;
+    }
     .burger {
         display: flex;
         position: relative;
@@ -123,7 +131,7 @@ nav ul {
 @media (max-width: 768px) {
     header {
         height: 60px;
-        /* Réduit encore un peu la hauteur */
+        width: auto;
     }
 
     .logo {

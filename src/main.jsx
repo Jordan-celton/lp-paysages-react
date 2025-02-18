@@ -6,10 +6,19 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-AOS.init();
+// Initialisation d'AOS avec des options personnalisées
+AOS.init({
+  duration: 1000, // Durée de l'animation
+  easing: "ease-in-out", // Type de courbe d'animation
+  once: true, // Animation qui se produit une seule fois
+});
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+// Vérification si l'élément #root existe avant de créer la racine
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
+}

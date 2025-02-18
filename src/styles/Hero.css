@@ -36,7 +36,12 @@
   height: 100vh;
   object-fit: cover;
   opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.swiper-slide img:hover {
+  transform: scale(1.05);
+  /* Légère animation de zoom lors du survol */
 }
 
 /* Enlever le background des boutons de navigation */
@@ -56,6 +61,11 @@
   color: white;
   z-index: 10;
   padding: 0 20px;
+  background: rgba(0, 0, 0, 0.3);
+  /* Ajouter un léger fond sombre pour améliorer la lisibilité */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  /* Ombre pour ajouter de la profondeur */
 }
 
 .hero-content h1 {
@@ -78,11 +88,14 @@
   font-size: 1.1rem;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .cta-button-hero:hover {
   background-color: brown;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  /* Ombre plus marquée au survol */
 }
 
 /* Responsivité */

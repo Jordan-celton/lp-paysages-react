@@ -1,7 +1,17 @@
+import { useEffect } from "react";
 import "aos/dist/aos.css";
 import "../styles/Services.css";
+import AOS from "aos"; // Initialisation d'AOS pour plus de contrôle sur les animations
 
 const Services = () => {
+  // Initialiser AOS lors du premier rendu
+  useEffect(() => {
+    AOS.init({
+      debounceDelay: 50, // Optimisation de la fréquence d'activation des animations
+      throttleDelay: 99, // Détection du scroll plus fluide
+    });
+  }, []);
+
   return (
     <section id="services" data-aos="fade-up">
       <h2>Nos Services</h2>
@@ -16,7 +26,7 @@ const Services = () => {
             className="fas fa-tree"
             aria-hidden="true"
             role="img"
-            alt="Arbre icon"
+            alt="Icône arbre représentant le service de conception de jardins"
           />
           <h3>Conception de Jardins</h3>
           <p>
@@ -34,7 +44,7 @@ const Services = () => {
             className="fas fa-leaf"
             aria-hidden="true"
             role="img"
-            alt="Feuille icon"
+            alt="Icône feuille représentant le service d'entretien des jardins"
           />
           <h3>Entretien</h3>
           <p>
@@ -52,7 +62,7 @@ const Services = () => {
             className="fas fa-tools"
             aria-hidden="true"
             role="img"
-            alt="Outils icon"
+            alt="Icône outils représentant le service de rénovation des jardins"
           />
           <h3>Rénovation</h3>
           <p>
