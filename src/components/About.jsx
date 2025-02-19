@@ -11,28 +11,28 @@ const About = ({ setModalOpen }) => {
 
   return (
     <section id="a-propos" data-aos="fade-up">
-      <h2>À Propos</h2>
+      <h1>À propos de LP Paysages</h1> {/* Utiliser un <h1> pour la page */}
       <div className="a-propos-container">
         <div className="a-propos-texte" data-aos="fade-left">
           <p>
             LP Paysages est une entreprise spécialisée dans l’aménagement et
-            l’entretien de jardins. Avec une expérience de plusieurs années,
-            notre équipe est dédiée à transformer vos espaces extérieurs en
-            lieux d&rsquo;exception.
+            l’entretien de jardins. Avec plusieurs années d’expérience, notre
+            équipe se dévoue à transformer vos espaces extérieurs en lieux
+            d’exception.
           </p>
           <p>
-            Nous mettons un point d&rsquo;honneur à respecter la nature tout en
-            créant des espaces esthétiques et fonctionnels. Que vous ayez un
-            projet de petite ou grande envergure, LP Paysages est à vos côtés
-            pour concrétiser vos idées.
+            Nous mettons un point d’honneur à respecter la nature tout en créant
+            des espaces esthétiques et fonctionnels. Que ce soit pour un projet
+            de petite ou grande envergure, LP Paysages est à vos côtés pour
+            concrétiser vos idées.
           </p>
         </div>
 
         <button
           className="devis"
-          onClick={handleDevisClick} // Appel à la fonction avec useCallback
+          onClick={handleDevisClick}
           aria-label="Demander un devis"
-          onFocus={() => console.log("Bouton en focus")} // Exemple d'ajout d'un gestionnaire d'événement
+          onFocus={() => console.log("Bouton en focus")}
         >
           Demande de devis
         </button>

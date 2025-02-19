@@ -7,52 +7,41 @@ import "../styles/Hero.css";
 import ImageHero1 from "../assets/Aménagement extérieur/amenagement-1.webp";
 import ImageHero2 from "../assets/Clotûres/cloture_1.webp";
 import ImageHero3 from "../assets/Murs/mur-1.webp";
+import { useEffect } from "react";
 
-// Ajout de préchargement des images principales
 const Hero = () => {
+  // Préchargement des images dans un useEffect
+  useEffect(() => {
+    const images = [ImageHero1, ImageHero2, ImageHero3];
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <section id="accueil">
-      <link
-        rel="preload"
-        href={ImageHero1}
-        as="image"
-        type="image/webp"
-        media="(min-width: 768px)"
-      />
-      <link
-        rel="preload"
-        href={ImageHero2}
-        as="image"
-        type="image/webp"
-        media="(min-width: 768px)"
-      />
-      <link
-        rel="preload"
-        href={ImageHero3}
-        as="image"
-        type="image/webp"
-        media="(min-width: 768px)"
-      />
-
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={10} // Réduit l'espace entre les slides pour une expérience plus fluide
+        spaceBetween={10}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }} // Légèrement plus lent
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop={true}
         lazyPreloadPrevNext={1}
         initialSlide={0}
         className="swiper-container"
+        aria-live="polite" // Amélioration accessibilité
       >
         <SwiperSlide>
           <img
             src={ImageHero1}
             alt="Aménagement extérieur avec des plantations et des allées"
             loading="lazy"
-            width="100%"
-            height="auto"
+            width="1920"
+            height="1080"
+            style={{ objectFit: "cover" }}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -60,8 +49,9 @@ const Hero = () => {
             src={ImageHero2}
             alt="Clôture moderne pour délimiter un jardin"
             loading="lazy"
-            width="100%"
-            height="auto"
+            width="1920"
+            height="1080"
+            style={{ objectFit: "cover" }}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -69,14 +59,17 @@ const Hero = () => {
             src={ImageHero3}
             alt="Mur paysager décoratif dans un jardin"
             loading="lazy"
-            width="100%"
-            height="auto"
+            width="1920"
+            height="1080"
+            style={{ objectFit: "cover" }}
           />
         </SwiperSlide>
       </Swiper>
 
       <div className="hero-content">
-        <h1>Bienvenue à LP Paysages</h1>
+        <h1>
+          Bienvenue chez <span>LP Paysages</span>
+        </h1>
         <p>
           Transformez votre espace extérieur avec nos solutions paysagères sur
           mesure.
