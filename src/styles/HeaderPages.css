@@ -182,8 +182,7 @@ nav {
     }
 
     .nav-links a {
-        color: #fff;
-        /* Changement de couleur pour améliorer la lisibilité */
+        color: wheat;
         font-size: 1.2rem;
     }
 

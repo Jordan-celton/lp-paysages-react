@@ -23,13 +23,8 @@ h2 {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: #f4f4f4;
+    background-color: wheat;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.service:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 /* Icône de service */
@@ -40,10 +35,6 @@ h2 {
     transition: transform 0.3s ease;
 }
 
-.service:hover i {
-    transform: scale(1.15);
-    /* Effet plus fluide */
-}
 
 /* Titre de service */
 .service h3 {

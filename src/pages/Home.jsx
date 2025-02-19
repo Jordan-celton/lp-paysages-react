@@ -47,26 +47,26 @@ const Home = () => {
           property="og:description"
           content="Découvrez nos services de paysagisme et embellissez votre espace extérieur."
         />
-        <meta
+        {/* <meta
           property="og:image"
           content="https://www.lppaysages.com/images/hero.webp" // Image WebP optimisée
-        />
+        /> */}
         <meta property="og:url" content="https://www.lppaysages.com" />
         <meta name="twitter:card" content="summary_large_image" />
 
         {/* Préchargement des images principales */}
-        <link
+        {/* <link
           rel="preload"
           href="https://www.lppaysages.com/images/hero.webp"
           as="image"
           type="image/webp"
-        />
-        <link
+        /> */}
+        {/* <link
           rel="preload"
           href="https://www.lppaysages.com/images/hero-alt.webp"
           as="image"
           type="image/webp"
-        />
+        /> */}
       </Helmet>
 
       {/* Header et Hero */}

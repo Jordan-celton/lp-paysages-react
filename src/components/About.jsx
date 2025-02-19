@@ -5,6 +5,7 @@ import "../styles/About.css";
 const About = ({ setModalOpen }) => {
   // Utilisation de useCallback pour éviter la recréation de la fonction à chaque rendu
   const handleDevisClick = useCallback(() => {
+    console.log("Ouverture de la modale");
     setModalOpen(true);
   }, [setModalOpen]);
 
@@ -31,6 +32,7 @@ const About = ({ setModalOpen }) => {
           className="devis"
           onClick={handleDevisClick} // Appel à la fonction avec useCallback
           aria-label="Demander un devis"
+          onFocus={() => console.log("Bouton en focus")} // Exemple d'ajout d'un gestionnaire d'événement
         >
           Demande de devis
         </button>
