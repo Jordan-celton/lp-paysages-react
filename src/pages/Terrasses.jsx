@@ -6,13 +6,13 @@ import "../styles/Pages.css";
 import Footer from "../components/Footer";
 
 // Importation des images
-import terrasse1 from "../assets/terrasse/terrasse-1.webp";
-import terrasse2 from "../assets/terrasse/terrasse-2.webp";
-import terrasse3 from "../assets/terrasse/terrasse-3.webp";
-import terrasse4 from "../assets/terrasse/terrasse-4.webp";
-import terrasse5 from "../assets/terrasse/terrasse-5.webp";
-import terrasse6 from "../assets/terrasse/terrasse-6.webp";
-import terrasse7 from "../assets/terrasse/terrasse-7.webp";
+import terrasse1 from "../assets/Terrasse/terrasse-1.webp";
+import terrasse2 from "../assets/Terrasse/terrasse-2.webp";
+import terrasse3 from "../assets/Terrasse/terrasse-3.webp";
+import terrasse4 from "../assets/Terrasse/terrasse-4.webp";
+import terrasse5 from "../assets/Terrasse/terrasse-5.webp";
+import terrasse6 from "../assets/Terrasse/terrasse-6.webp";
+import terrasse7 from "../assets/Terrasse/terrasse-7.webp";
 
 const images = [
   terrasse1,
