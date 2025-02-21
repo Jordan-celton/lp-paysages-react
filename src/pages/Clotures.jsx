@@ -106,7 +106,7 @@ const Clotures = () => {
               </p>
             </div>
             <div className="service-item">
-              <h3>Clôtures en métal</h3>
+              <h3>Clôtures en acier et aluminium</h3>
               <img src={cloture2} alt="Clôture en métal" />
               <p>
                 Les clôtures en métal offrent une sécurité accrue tout en
@@ -116,7 +116,7 @@ const Clotures = () => {
                 une délimitation robuste.
               </p>
             </div>
-            <div className="service-item">
+            {/* <div className="service-item">
               <h3>Clôtures personnalisées</h3>
               <img src={cloture3} alt="Clôture personnalisée" />
               <p>
@@ -126,7 +126,7 @@ const Clotures = () => {
                 créer une clôture qui s&apos;adapte parfaitement à votre
                 environnement et à vos attentes.
               </p>
-            </div>
+            </div> */}
           </div>
         </section>
 

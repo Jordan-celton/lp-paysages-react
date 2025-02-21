@@ -14,18 +14,21 @@ import terrasse5 from "../assets/Terrasse/terrasse-5.webp";
 import terrasse6 from "../assets/Terrasse/terrasse-6.webp";
 import terrasse7 from "../assets/Terrasse/terrasse-7.webp";
 
-const images = [
-  terrasse1,
-  terrasse2,
-  terrasse3,
-  terrasse4,
-  terrasse5,
-  terrasse6,
-  terrasse7,
+const imagesData = [
+  { src: terrasse1, category: "Bois" },
+  { src: terrasse2, category: "Bois" },
+  { src: terrasse3, category: "Dallage" },
+  { src: terrasse4, category: "Dallage" },
+  { src: terrasse5, category: "Bois" },
+  { src: terrasse6, category: "Dallage" },
+  { src: terrasse7, category: "Bois" },
 ];
+
+const categories = ["Tous", "Bois", "Dallage", "Composites"];
 
 const Terrasses = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("Tous");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,21 +36,13 @@ const Terrasses = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const openModal = (index) => {
-    setSelectedImageIndex(index);
-  };
-
-  const closeModal = () => {
-    setSelectedImageIndex(null);
-  };
+  const openModal = (index) => setSelectedImageIndex(index);
+  const closeModal = () => setSelectedImageIndex(null);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        closeModal();
-      }
+      if (event.key === "Escape") closeModal();
     };
-
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
@@ -59,9 +54,14 @@ const Terrasses = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulation de soumission de formulaire
     setSubmitted(true);
   };
+
+  // Filtrage des images selon la catégorie sélectionnée
+  const filteredImages =
+    selectedCategory === "Tous"
+      ? imagesData
+      : imagesData.filter((img) => img.category === selectedCategory);
 
   return (
     <div>
@@ -87,50 +87,55 @@ const Terrasses = () => {
         {/* Section Nos services */}
         <section>
           <h2>Nos services</h2>
-          <p>
-            Chez LP Paysages, nous proposons des services sur mesure pour créer
-            la terrasse idéale pour votre extérieur. Nous utilisons des
-            matériaux de qualité pour concevoir des espaces conviviaux et
-            durables.
-          </p>
           <div className="services-container">
             <div className="service-item">
               <h3>Terrasses en bois</h3>
               <img src={terrasse1} alt="Terrasse en bois" />
               <p>
                 Profitez d’une terrasse en bois, idéale pour un aspect naturel
-                et chaleureux. Nos terrasses en bois sont conçues pour durer
-                tout en étant esthétiques et pratiques.
+                et chaleureux.
               </p>
             </div>
             <div className="service-item">
-              <h3>Terrasses en pierre</h3>
+              <h3>Dallage en pierres naturelles</h3>
               <img src={terrasse3} alt="Terrasse en pierre" />
               <p>
                 Choisissez une terrasse en pierre pour une solution robuste et
-                élégante. Ce matériau apporte une touche de raffinement à votre
-                espace extérieur.
+                élégante.
               </p>
             </div>
             <div className="service-item">
-              <h3>Terrasses personnalisées</h3>
-              <img src={terrasse2} alt="Terrasse personnalisée" />
+              <h3>Terrasses composites</h3>
+              <img src={terrasse2} alt="Terrasse composite" />
               <p>
-                Chaque projet est unique ! Nous vous accompagnons dans la
-                création d’une terrasse qui correspond à vos goûts et à votre
-                espace.
+                Une terrasse moderne et résistante, facile d'entretien et
+                esthétique.
               </p>
             </div>
           </div>
         </section>
 
+        {/* Section Réalisations avec filtre */}
         <section>
           <h2>Nos réalisations de terrasses</h2>
+
+          <div className="filters">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={selectedCategory === category ? "active" : ""}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
           <div className="grid-container">
-            {images.map((image, index) => (
+            {filteredImages.map((image, index) => (
               <div key={index} className="grid-item">
                 <img
-                  src={image}
+                  src={image.src}
                   alt={`Terrasse ${index + 1}`}
                   loading="lazy"
                   onClick={() => openModal(index)}
@@ -144,6 +149,7 @@ const Terrasses = () => {
           </div>
         </section>
 
+        {/* Formulaire de contact */}
         <section className="devisPage">
           <h2>Demande de devis</h2>
           {submitted ? (
@@ -187,9 +193,10 @@ const Terrasses = () => {
 
       <Footer />
 
+      {/* Modal d'affichage des images */}
       {selectedImageIndex !== null && (
         <ImageModal
-          images={images}
+          images={filteredImages.map((img) => img.src)}
           selectedImageIndex={selectedImageIndex}
           onClose={closeModal}
         />

@@ -31,7 +31,9 @@ const Services = () => {
           <h3>Conception de Jardins</h3>
           <p>
             Nous créons des espaces extérieurs sur mesure pour vous offrir un
-            jardin unique et agréable.
+            jardin unique et agréable. Grâce à une étude 3D détaillée de votre
+            projet, nous concevons un aménagement personnalisé qui répond
+            parfaitement à vos envies et à votre environnement.
           </p>
         </div>
         <div
@@ -48,8 +50,10 @@ const Services = () => {
           />
           <h3>Entretien</h3>
           <p>
-            Des services d&apos;entretien réguliers pour garder votre jardin en
-            parfait état toute l&apos;année.
+            Des services d'entretien réguliers pour garder votre jardin en
+            parfait état toute l'année. Nous proposons des contrats annuels ou
+            ponctuels (tonte, taille, entretien des massifs), avec un crédit
+            d'impôt de 50 % sur ces prestations.
           </p>
         </div>
         <div
@@ -64,10 +68,11 @@ const Services = () => {
             role="img"
             alt="Icône outils représentant le service de rénovation des jardins"
           />
-          <h3>Rénovation</h3>
+          <h3>Création</h3>
           <p>
             Modernisation et rénovation de vos espaces extérieurs pour les
-            rendre comme neufs.
+            sublimer et leur donner une nouvelle vie, en alliant esthétique et
+            fonctionnalité.
           </p>
         </div>
       </div>

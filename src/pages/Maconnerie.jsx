@@ -86,7 +86,7 @@ const Maconnerie = () => {
           </p>
           <div className="services-container">
             <div className="service-item">
-              <h3>Murs en pierre</h3>
+              <h3>Enrobé</h3>
               <img src={mur1} alt="Mur en pierre" />
               <p>
                 Nous créons des murs en pierre naturelle pour ajouter du
@@ -95,7 +95,7 @@ const Maconnerie = () => {
               </p>
             </div>
             <div className="service-item">
-              <h3>Murs en béton</h3>
+              <h3>En gravillon</h3>
               <img src={mur2} alt="Mur en béton" />
               <p>
                 Offrez à votre jardin ou terrasse une touche moderne avec nos
@@ -104,7 +104,16 @@ const Maconnerie = () => {
               </p>
             </div>
             <div className="service-item">
-              <h3>Aménagements extérieurs </h3>
+              <h3> Béton décoratif</h3>
+              <img src={mur3} alt="Aménagement extérieur" />
+              <p>
+                Tous nos projets sont personnalisés en fonction de vos envies.
+                Nous vous proposons des aménagements extérieurs uniques et
+                adaptés à vos goûts.
+              </p>
+            </div>
+            <div className="service-item">
+              <h3> Pierres naturelles</h3>
               <img src={mur3} alt="Aménagement extérieur" />
               <p>
                 Tous nos projets sont personnalisés en fonction de vos envies.

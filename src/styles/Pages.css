@@ -98,6 +98,26 @@ section p {
     transform: scale(1.05);
 }
 
+ .filters {
+     display: flex;
+     justify-content: center;
+     gap: 10px;
+     margin-bottom: 20px;
+ }
+
+ .filters button {
+     padding: 10px;
+     border: none;
+     cursor: pointer;
+     background: wheat;
+     border-radius: 5px;
+ }
+
+ .filters button.active {
+     background: #ff5c5c;
+     color: white;
+ }
+
 /* Modal d'image */
 .modal-overlay {
     position: fixed;

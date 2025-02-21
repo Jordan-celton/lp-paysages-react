@@ -101,7 +101,7 @@ const Projects = () => {
           to="/maconnerie"
           imgSrc={Mur}
           imgAlt="Mur en maçonnerie moderne"
-          title="Maçonneries"
+          title="Allées"
           description="Travaux de maçonnerie pour des structures solides et durables."
           buttonLabel="Voir plus"
         />

@@ -36,7 +36,7 @@ const Contact = () => {
             </a>
           </p>
           <p>
-            <strong>Email :</strong>{" "}
+            <strong>Email : </strong>{" "}
             <a
               href="mailto:perennecludovic@gmail.com"
               aria-label="Envoyer un email à perennecludovic@gmail.com"
@@ -48,7 +48,7 @@ const Contact = () => {
             </a>
           </p>
           <p>
-            <strong>Horaires :</strong>
+            <strong>Horaires : </strong>
             <span itemProp="openingHours">Lundi au Vendredi, 9h - 18h</span>
           </p>
         </address>
