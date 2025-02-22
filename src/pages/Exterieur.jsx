@@ -5,7 +5,7 @@ import ImageModal from "../components/ImageModal";
 import "../styles/Pages.css";
 import Footer from "../components/Footer";
 
-// Importation des images (en utilisant des importations optimisées pour les images)
+// Importation des images
 import amenagement1 from "../assets/Aménagement extérieur/amenagement-1.webp";
 import amenagement2 from "../assets/Aménagement extérieur/amenagement-2.webp";
 import amenagement3 from "../assets/Aménagement extérieur/amenagement-3.webp";
@@ -14,18 +14,58 @@ import amenagement5 from "../assets/Aménagement extérieur/amenagement-5.webp";
 import amenagement6 from "../assets/Aménagement extérieur/amenagement-6.webp";
 import amenagement7 from "../assets/Aménagement extérieur/amenagement-7.webp";
 
-const images = [
-  amenagement1,
-  amenagement2,
-  amenagement3,
-  amenagement4,
-  amenagement5,
-  amenagement6,
-  amenagement7,
+// Données des images
+const imagesData = [
+  {
+    src: amenagement1,
+    category: "Paysager",
+    description:
+      "Création d'un jardin paysager esthétique et fonctionnel, adapté à votre environnement.",
+  },
+  {
+    src: amenagement2,
+    category: "Terrasses",
+    description:
+      "Terrasse en bois élégante et durable, idéale pour un espace de détente extérieur.",
+  },
+  {
+    src: amenagement3,
+    category: "Sur-mesure",
+    description:
+      "Aménagement sur mesure adapté à vos besoins spécifiques, que ce soit des allées ou des espaces de jeux.",
+  },
+  {
+    src: amenagement4,
+    category: "Paysager",
+    description:
+      "Jardin paysager personnalisé avec une sélection de plantes adaptées à votre espace.",
+  },
+  {
+    src: amenagement5,
+    category: "Terrasses",
+    description:
+      "Terrasse en bois conçue pour résister aux intempéries, offrant confort et esthétisme.",
+  },
+  {
+    src: amenagement6,
+    category: "Sur-mesure",
+    description:
+      "Aménagement extérieur unique, réalisé selon vos envies et les caractéristiques de votre terrain.",
+  },
+  {
+    src: amenagement7,
+    category: "Paysager",
+    description:
+      "Aménagement paysager créatif pour transformer votre espace extérieur en un lieu harmonieux.",
+  },
 ];
+
+// Catégories
+const categories = ["Tous", "Paysager", "Terrasses", "Sur-mesure"];
 
 const Exterieur = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("Tous");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,34 +73,38 @@ const Exterieur = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const openModal = (index) => {
-    setSelectedImageIndex(index);
-  };
+  // Ouvrir la modale d'image
+  const openModal = (index) => setSelectedImageIndex(index);
 
-  const closeModal = () => {
-    setSelectedImageIndex(null);
-  };
+  // Fermer la modale d'image
+  const closeModal = () => setSelectedImageIndex(null);
 
+  // Fermer la modale avec la touche Escape
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        closeModal();
-      }
+      if (event.key === "Escape") closeModal();
     };
-
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Gérer le changement des valeurs du formulaire
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  // Gérer la soumission du formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
   };
+
+  // Filtrer les images selon la catégorie sélectionnée
+  const filteredImages =
+    selectedCategory === "Tous"
+      ? imagesData
+      : imagesData.filter((img) => img.category === selectedCategory);
 
   return (
     <div>
@@ -95,8 +139,7 @@ const Exterieur = () => {
               <p>
                 Nous créons des jardins esthétiques et fonctionnels, en
                 choisissant des plantes et des matériaux adaptés à votre
-                environnement. Notre objectif est de transformer votre extérieur
-                en un lieu agréable et harmonieux.
+                environnement.
               </p>
             </div>
             <div className="service-item">
@@ -104,9 +147,7 @@ const Exterieur = () => {
               <img src={amenagement2} alt="Terrasse en bois" />
               <p>
                 Offrez à votre extérieur une terrasse en bois élégante et
-                durable. Nous vous proposons des solutions sur mesure pour créer
-                un espace de détente idéal, en utilisant des matériaux de
-                qualité.
+                durable, réalisée sur mesure pour votre espace extérieur.
               </p>
             </div>
             <div className="service-item">
@@ -114,43 +155,56 @@ const Exterieur = () => {
               <img src={amenagement3} alt="Aménagement sur mesure" />
               <p>
                 Chaque projet est unique, et nous nous adaptons à vos besoins
-                spécifiques pour concevoir des aménagements sur mesure. Que ce
-                soit pour des allées, des jardins zen ou des espaces de jeux,
-                nous créons l&apos;aménagement parfait pour votre terrain.
+                pour créer des aménagements sur mesure, selon vos envies et
+                contraintes.
               </p>
             </div>
           </div>
         </section>
 
+        {/* Section Réalisations avec filtre */}
         <section>
           <h2>Aménagements extérieurs</h2>
+
+          <div className="filters">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={selectedCategory === category ? "active" : ""}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
           <div className="grid-container">
-            {images.map((image, index) => (
+            {filteredImages.map((image, index) => (
               <div key={index} className="grid-item">
                 <img
-                  src={image}
+                  src={image.src}
                   alt={`Aménagement extérieur ${index + 1}`}
                   loading="lazy"
                   onClick={() => openModal(index)}
-                  onKeyDown={(e) => e.key === "Enter" && openModal(index)}
                   role="button"
                   tabIndex="0"
                   aria-label={`Agrandir l'image de l'aménagement extérieur ${
                     index + 1
                   }`}
-                  style={{ cursor: "pointer" }}
                 />
+                <div className="image-caption">{image.description}</div>
               </div>
             ))}
           </div>
         </section>
 
+        {/* Formulaire de contact */}
         <section className="devisPage">
           <h2>Demande de devis</h2>
           {submitted ? (
             <p>Merci pour votre demande ! Nous vous contacterons bientôt.</p>
           ) : (
-            <form className="formPage" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <label>
                 Nom:
                 <input
@@ -188,10 +242,10 @@ const Exterieur = () => {
 
       <Footer />
 
-      {/* Modal avec l'image sélectionnée */}
+      {/* Modal d'affichage des images */}
       {selectedImageIndex !== null && (
         <ImageModal
-          images={images}
+          images={filteredImages.map((img) => img.src)}
           selectedImageIndex={selectedImageIndex}
           onClose={closeModal}
         />

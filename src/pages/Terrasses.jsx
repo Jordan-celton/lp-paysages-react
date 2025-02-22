@@ -15,13 +15,46 @@ import terrasse6 from "../assets/Terrasse/terrasse-6.webp";
 import terrasse7 from "../assets/Terrasse/terrasse-7.webp";
 
 const imagesData = [
-  { src: terrasse1, category: "Bois" },
-  { src: terrasse2, category: "Bois" },
-  { src: terrasse3, category: "Dallage" },
-  { src: terrasse4, category: "Dallage" },
-  { src: terrasse5, category: "Bois" },
-  { src: terrasse6, category: "Dallage" },
-  { src: terrasse7, category: "Bois" },
+  {
+    src: terrasse1,
+    category: "Bois",
+    description:
+      "Une belle terrasse en bois naturel pour un espace chaleureux.",
+  },
+  {
+    src: terrasse2,
+    category: "Bois",
+    description:
+      "Terrasse en bois idéale pour un jardin moderne et accueillant.",
+  },
+  {
+    src: terrasse3,
+    category: "Dallage",
+    description: "Dallage en pierre offrant un style élégant et robuste.",
+  },
+  {
+    src: terrasse4,
+    category: "Dallage",
+    description:
+      "Une terrasse en pierre naturelle pour une touche authentique.",
+  },
+  {
+    src: terrasse5,
+    category: "Bois",
+    description: "Terrasse en bois exotique résistante aux intempéries.",
+  },
+  {
+    src: terrasse6,
+    category: "Dallage",
+    description:
+      "Un dallage raffiné parfait pour les grandes surfaces extérieures.",
+  },
+  {
+    src: terrasse7,
+    category: "Bois",
+    description:
+      "Terrasse en bois claire apportant une ambiance zen et apaisante.",
+  },
 ];
 
 const categories = ["Tous", "Bois", "Dallage", "Composites"];
@@ -134,6 +167,7 @@ const Terrasses = () => {
           <div className="grid-container">
             {filteredImages.map((image, index) => (
               <div key={index} className="grid-item">
+                {/* Image */}
                 <img
                   src={image.src}
                   alt={`Terrasse ${index + 1}`}
@@ -142,8 +176,10 @@ const Terrasses = () => {
                   role="button"
                   tabIndex="0"
                   aria-label={`Agrandir l'image de la terrasse ${index + 1}`}
-                  style={{ cursor: "pointer" }}
                 />
+
+                {/* Texte explicatif */}
+                <div className="image-caption">{image.description}</div>
               </div>
             ))}
           </div>
