@@ -14,6 +14,8 @@ import mur5 from "../assets/Murs/mur-5.webp";
 import mur6 from "../assets/Murs/mur-6.webp";
 import mur7 from "../assets/Murs/mur-7.webp";
 import mur8 from "../assets/Murs/mur-8.webp";
+import mur9 from "../assets/Murs/mur-9.webp";
+import mur10 from "../assets/Murs/mur-10.webp";
 
 // Données des images
 const imagesData = [
@@ -58,6 +60,18 @@ const imagesData = [
     category: "Béton",
     description:
       "Murs en béton décoratif, idéals pour des aménagements extérieurs élégants.",
+  },
+  {
+    src: mur9,
+    category: "Pierre",
+    description:
+      "Mur en pierre naturelle, robuste et esthétique, pour un extérieur plein de charme.",
+  },
+  {
+    src: mur10,
+    category: "Pierre",
+    description:
+      "Aménagement extérieur en pierre, pour un espace extérieur unique et personnalisé.",
   },
 ];
 
@@ -115,7 +129,7 @@ const Maconnerie = () => {
           <div className="services-container">
             <div className="service-item">
               <h3>Murs en pierre naturelle</h3>
-              <img src={mur1} alt="Mur en pierre" />
+              <img src={mur9} alt="Mur en pierre" />
               <p>
                 Créez un espace unique avec nos murs en pierre naturelle,
                 résistants aux intempéries et élégants.
@@ -131,7 +145,7 @@ const Maconnerie = () => {
             </div>
             <div className="service-item">
               <h3>Aménagements extérieurs</h3>
-              <img src={mur3} alt="Aménagement extérieur" />
+              <img src={mur10} alt="Aménagement extérieur" />
               <p>
                 Nous concevons des aménagements extérieurs personnalisés selon
                 vos envies et vos besoins.

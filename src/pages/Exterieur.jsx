@@ -14,6 +14,9 @@ import amenagement4 from "../assets/Aménagement extérieur/amenagement-4.webp";
 import amenagement5 from "../assets/Aménagement extérieur/amenagement-5.webp";
 import amenagement6 from "../assets/Aménagement extérieur/amenagement-6.webp";
 import amenagement7 from "../assets/Aménagement extérieur/amenagement-7.webp";
+import amenagement9 from "../assets/Aménagement extérieur/amenagement-9.webp";
+import amenagement11 from "../assets/Aménagement extérieur/amenagement-11.webp";
+import terrasse5 from "../assets/Terrasse/terrasse-5.webp";
 
 // Données des images
 const imagesData = [
@@ -25,9 +28,9 @@ const imagesData = [
   },
   {
     src: amenagement2,
-    category: "Terrasses",
+    category: "paysager",
     description:
-      "Terrasse en bois élégante et durable, idéale pour un espace de détente extérieur.",
+      "Aménagement extérieur sur mesure, adapté à vos besoins spécifiques et à votre terrain.",
   },
   {
     src: amenagement3,
@@ -43,9 +46,9 @@ const imagesData = [
   },
   {
     src: amenagement5,
-    category: "Terrasses",
+    category: "Sur-mesure",
     description:
-      "Terrasse en bois conçue pour résister aux intempéries, offrant confort et esthétisme.",
+      "Création d'un espace extérieur unique, réalisé sur mesure selon vos envies.",
   },
   {
     src: amenagement6,
@@ -55,9 +58,27 @@ const imagesData = [
   },
   {
     src: amenagement7,
-    category: "Paysager",
+    category: "Terrasses",
     description:
       "Aménagement paysager créatif pour transformer votre espace extérieur en un lieu harmonieux.",
+  },
+  {
+    src: terrasse5,
+    category: "Terrasses",
+    description:
+      "Terrasse en bois sur mesure, idéale pour profiter de votre extérieur en toute saison.",
+  },
+  {
+    src: amenagement9,
+    category: "Sur-mesure",
+    description:
+      "Aménagement extérieur sur mesure, adapté à vos besoins spécifiques et à votre terrain.",
+  },
+  {
+    src: amenagement11,
+    category: "Sur-mesure",
+    description:
+      "Aménagement extérieur sur mesure, adapté à vos besoins spécifiques et à votre terrain.",
   },
 ];
 
@@ -127,7 +148,7 @@ const Exterieur = () => {
             </div>
             <div className="service-item">
               <h3>Terrasses en bois</h3>
-              <img src={amenagement2} alt="Terrasse en bois" />
+              <img src={terrasse5} alt="Terrasse en bois" />
               <p>
                 Offrez à votre extérieur une terrasse en bois élégante et
                 durable, réalisée sur mesure pour votre espace extérieur.
@@ -135,7 +156,7 @@ const Exterieur = () => {
             </div>
             <div className="service-item">
               <h3>Aménagement sur mesure</h3>
-              <img src={amenagement3} alt="Aménagement sur mesure" />
+              <img src={amenagement11} alt="Aménagement sur mesure" />
               <p>
                 Chaque projet est unique, et nous nous adaptons à vos besoins
                 pour créer des aménagements sur mesure, selon vos envies et
