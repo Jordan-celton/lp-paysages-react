@@ -18,9 +18,9 @@ const Contact = () => {
               itemScope
               itemType="https://schema.org/PostalAddress"
             >
-              <span itemProp="streetAddress">19 Allée des Primevères</span>,
-              <span itemProp="postalCode">29000</span>
-              <span itemProp="addressLocality">Quimper</span>
+              <span itemProp="streetAddress"> 19 Allée des Primevères</span>,
+              <span itemProp="postalCode"> 29000</span>
+              <span itemProp="addressLocality"> Quimper</span>
             </span>
           </p>
           <p>

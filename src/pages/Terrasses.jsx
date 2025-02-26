@@ -4,6 +4,7 @@ import HeaderPages from "../components/HeaderPages";
 import ImageModal from "../components/ImageModal";
 import "../styles/Pages.css";
 import Footer from "../components/Footer";
+import Contact from "../components/Contact";
 
 // Importation des images
 import terrasse1 from "../assets/Terrasse/terrasse-1.webp";
@@ -62,13 +63,6 @@ const categories = ["Tous", "Bois", "Dallage", "Composites"];
 const Terrasses = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("Tous");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-
   const openModal = (index) => setSelectedImageIndex(index);
   const closeModal = () => setSelectedImageIndex(null);
 
@@ -79,16 +73,6 @@ const Terrasses = () => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
 
   // Filtrage des images selon la catégorie sélectionnée
   const filteredImages =
@@ -185,46 +169,7 @@ const Terrasses = () => {
           </div>
         </section>
 
-        {/* Formulaire de contact */}
-        <section className="devisPage">
-          <h2>Demande de devis</h2>
-          {submitted ? (
-            <p>Merci pour votre demande ! Nous vous contacterons bientôt.</p>
-          ) : (
-            <form onSubmit={handleSubmit}>
-              <label>
-                Nom:
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <label>
-                Email:
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <label>
-                Message:
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                ></textarea>
-              </label>
-              <button type="submit">Envoyer</button>
-            </form>
-          )}
-        </section>
+        <Contact />
       </main>
 
       <Footer />
