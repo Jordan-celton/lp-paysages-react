@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import {
   BrowserRouter as Router,
@@ -5,25 +6,19 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import { useEffect } from "react";
 import Home from "./pages/Home";
 import Terrasses from "./pages/Terrasses";
 import Clotures from "./pages/Clotures";
 import Exterieur from "./pages/Exterieur";
 import Maconnerie from "./pages/Maconnerie";
 
-// Composant qui gère le scroll après navigation
-const ScrollToSection = () => {
-  const location = useLocation();
+// Gestion du scroll lors du changement de route
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    if (location.state?.targetSection) {
-      const element = document.getElementById(location.state.targetSection);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  }, [location]);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
 
   return null;
 };
@@ -32,7 +27,7 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
-        <ScrollToSection />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/terrasses" element={<Terrasses />} />
