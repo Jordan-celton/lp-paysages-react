@@ -60,31 +60,29 @@ const ProjectCard = ({
   description,
   buttonLabel,
   animation,
-}) => {
-  return (
-    <Link
-      to={to}
-      aria-label={`Voir les projets de ${title.toLowerCase()}`}
-      className="project-link"
-    >
-      <div className="card" data-aos={animation}>
-        <img
-          src={imgSrc}
-          alt={imgAlt}
-          loading="lazy"
-          width="100%"
-          height="auto"
-          onError={(e) => (e.target.src = "/images/fallback-image.jpg")}
-        />
-        <div className="card-content">
-          <h3>{title}</h3>
-          <p>{description}</p>
-          <button className="cta-button">{buttonLabel}</button>
-        </div>
+}) => (
+  <Link
+    to={to}
+    aria-label={`Voir les projets de ${title.toLowerCase()}`}
+    className="project-link"
+  >
+    <div className="card" data-aos={animation}>
+      <img
+        src={imgSrc}
+        alt={imgAlt}
+        loading="lazy"
+        width="100%"
+        height="auto"
+        onError={(e) => (e.target.src = "/images/fallback-image.jpg")}
+      />
+      <div className="card-content">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <button className="cta-button">{buttonLabel}</button>
       </div>
-    </Link>
-  );
-};
+    </div>
+  </Link>
+);
 
 // Définition des types de propriétés
 ProjectCard.propTypes = {
