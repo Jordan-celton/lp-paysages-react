@@ -1,61 +1,161 @@
-/* Conteneur des services */
+/* SERVICES SECTION - Optimisé avec animations AOS */
+#services {
+    padding: 5rem 1.5rem;
+    background-color: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+}
+
+#services h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+#services h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+/* Service Container */
 .service-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
     max-width: 1200px;
-    padding: 20px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-/* Titre des services */
-h2 {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 2rem;
-    color: #333;
-}
-
-/* Style de chaque service */
+/* Service Card */
 .service {
+    background: var(--bg-color);
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
     text-align: center;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: wheat;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Icône de service */
+.service::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.service:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+}
+
+.service:hover::before {
+    transform: scaleX(1);
+}
+
+/* Service Icon */
 .service i {
     font-size: 3rem;
-    color: #ff5c5c;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+    display: inline-block;
 }
 
+.service:hover i {
+    transform: scale(1.1);
+    color: var(--hover-color);
+}
 
-/* Titre de service */
+/* Service Title */
 .service h3 {
     font-size: 1.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    position: relative;
 }
 
-/* Description de service */
+.service h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--hover-color);
+    transition: var(--transition);
+}
+
+.service:hover h3::after {
+    width: 60px;
+}
+
+/* Service Description */
 .service p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
     font-size: 1rem;
-    color: #666;
-    margin-bottom: 25px;
-    /* Espacement supplémentaire */
 }
 
-/* Adaptation pour tablettes (768px) */
-@media (max-width: 768px) {
+/* Animations spécifiques pour AOS */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition-property: transform, opacity;
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-aos="fade-left"] {
+    opacity: 0;
+    transform: translateX(20px);
+    transition-property: transform, opacity;
+}
+
+[data-aos="fade-left"].aos-animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
     .service-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-        /* Réduire l'écart entre les services */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    #services {
+        padding: 3rem 1rem;
+    }
+
+    .service {
+        padding: 2rem 1.5rem;
     }
 
     .service i {
@@ -65,42 +165,31 @@ h2 {
     .service h3 {
         font-size: 1.3rem;
     }
-
-    .service p {
-        font-size: 0.9rem;
-    }
 }
 
-/* Adaptation pour très petits écrans (mobiles) */
 @media (max-width: 480px) {
     .service-container {
         grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 15px;
-        /* Espacement réduit pour les petits écrans */
+        max-width: 400px;
     }
 
     .service {
-        padding: 20px;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        /* Ombre plus douce */
+        padding: 1.8rem 1.2rem;
     }
 
-    .service:hover {
-        transform: translateY(-5px);
-        /* Effet plus subtil */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    #services h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
     }
+}
 
-    .service i {
-        font-size: 2rem;
-    }
+/* Accessibilité - Focus Styles */
+.service:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
 
-    .service h3 {
-        font-size: 1.2rem;
-    }
-
-    .service p {
-        font-size: 0.9rem;
-    }
+.service i:focus,
+.service h3:focus {
+    outline: none;
 }

@@ -28,6 +28,7 @@ section {
 section h1,
 section h2 {
     margin-bottom: 10px;
+    font-size: 2rem;
 }
 
 section p {

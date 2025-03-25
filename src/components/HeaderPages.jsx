@@ -1,88 +1,155 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faBriefcase,
+  faEnvelope,
+  faTimes,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
 import "../styles/HeaderPages.css";
 import logo from "../assets/logo.png";
 
 const HeaderPages = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
+  // Gestion du scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Navigation et scroll
   const handleNavigation = useCallback(
     (hash) => {
       if (window.location.pathname === "/") {
-        // Si on est déjà sur la page d'accueil, on scrolle directement
         const element = document.getElementById(hash);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
         }
       } else {
-        // Si on est sur une autre page, on navigue vers "/" avec le hash en state
         navigate("/", { state: { targetSection: hash } });
       }
-
-      setMenuOpen(false); // Fermer le menu après navigation
+      closeMenu();
     },
     [navigate]
   );
 
-  const toggleMenu = () => {
-    setMenuOpen((prevState) => !prevState);
-  };
+  // Gestion du menu
+  const toggleMenu = useCallback(() => {
+    setMenuOpen((prev) => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+  }, []);
+
+  // Fermeture avec Escape
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && menuOpen) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen, closeMenu]);
+
+  // Fermeture en cliquant à l'extérieur
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        menuOpen &&
+        !e.target.closest(".nav-container") &&
+        !e.target.closest(".burger")
+      ) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen, closeMenu]);
 
   return (
-    <header>
-      <img className="logo" src={logo} alt="logo LP Paysages" />
+    <header
+      className={`${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
+    >
+      <img
+        className="logo"
+        src={logo}
+        alt="Logo"
+        onClick={() => handleNavigation("accueil")}
+        tabIndex="0"
+        onKeyDown={(e) => e.key === "Enter" && handleNavigation("accueil")}
+      />
 
       <div className="nav-container">
         <nav
           className={`nav-links ${menuOpen ? "active" : ""}`}
           aria-label="Menu principal"
+          aria-hidden={!menuOpen}
+          id="main-nav"
         >
           <ul>
             <li>
-              <a
+              <button
                 onClick={() => handleNavigation("accueil")}
                 aria-label="Aller à la section Accueil"
-                role="link"
+                tabIndex={menuOpen ? "0" : "-1"}
               >
-                <i className="fas fa-home" aria-hidden="true"></i> Accueil
-              </a>
+                <FontAwesomeIcon icon={faHome} aria-hidden="true" />
+                <span>Accueil</span>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 onClick={() => handleNavigation("projets")}
                 aria-label="Aller à la section Réalisations"
-                role="link"
+                tabIndex={menuOpen ? "0" : "-1"}
               >
-                <i className="fas fa-briefcase" aria-hidden="true"></i>{" "}
-                Réalisations
-              </a>
+                <FontAwesomeIcon icon={faBriefcase} aria-hidden="true" />
+                <span>Réalisations</span>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 onClick={() => handleNavigation("contact")}
                 aria-label="Aller à la section Contact"
-                role="link"
+                tabIndex={menuOpen ? "0" : "-1"}
               >
-                <i className="fas fa-envelope" aria-hidden="true"></i> Contact
-              </a>
+                <FontAwesomeIcon icon={faEnvelope} aria-hidden="true" />
+                <span>Contact</span>
+              </button>
             </li>
           </ul>
         </nav>
       </div>
 
-      <div
-        className="burger"
+      <button
+        className={`burger ${menuOpen ? "active" : ""}`}
         onClick={toggleMenu}
         aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
         aria-expanded={menuOpen}
-        role="button"
-        tabIndex="0"
+        aria-controls="main-nav"
       >
-        <div className={`line1 ${menuOpen ? "toggle" : ""}`}></div>
-        <div className={`line2 ${menuOpen ? "toggle" : ""}`}></div>
-        <div className={`line3 ${menuOpen ? "toggle" : ""}`}></div>
-      </div>
+        {menuOpen ? (
+          <FontAwesomeIcon icon={faTimes} className="close-icon" size="lg" />
+        ) : (
+          <FontAwesomeIcon icon={faBars} className="menu-icon" size="lg" />
+        )}
+      </button>
     </header>
   );
 };

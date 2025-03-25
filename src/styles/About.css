@@ -1,58 +1,119 @@
-/* Réinitialisation de base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-/* Section principale */
+/* Réinitialisation et styles de base */
 #a-propos {
-    padding: 50px 20px;
-    background-color: white;
+    padding: 4rem 1.5rem;
+    background-color: var(--bg-color);
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-#a-propos h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
+#a-propos h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
 }
 
-/* Conteneur flex pour le texte et le bouton */
+#a-propos h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+/* Conteneur principal */
 .a-propos-container {
     max-width: 1000px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 /* Texte descriptif */
 .a-propos-texte {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
     text-align: justify;
     max-width: 800px;
-    line-height: 1.6;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    position: relative;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.a-propos-texte::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    pointer-events: none;
 }
 
 /* Bouton demande de devis */
 .devis {
-    background-color: #ff5c5c;
+    background-color: var(--primary-color);
     color: white;
-    padding: 12px 20px;
+    padding: 1rem 2rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 50px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.2s forwards;
+    position: relative;
+    overflow: hidden;
 }
 
-/* MODAL */
+.devis:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.devis:active {
+    transform: translateY(1px);
+}
+
+.devis::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.devis:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+/* Modal Styles */
 .modal {
     position: fixed;
     top: 0;
@@ -63,140 +124,212 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
-    animation: fadeIn 0.3s ease-in-out;
-    will-change: opacity;
-    /* Optimisation pour la performance */
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+    backdrop-filter: blur(5px);
 }
 
-/* Animation pour l’apparition de la modale */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .modal-content {
     background: white;
-    padding: 30px;
-    border-radius: 15px;
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
     width: 90%;
     max-width: 600px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s ease-out;
+    position: relative;
     max-height: 90vh;
-    animation: slideIn 0.3s ease-out;
-    will-change: transform, opacity;
-    /* Optimisation pour la performance */
+    overflow-y: auto;
 }
 
-/* Animation de l'apparition du contenu de la modale */
-@keyframes slideIn {
-    0% {
-        transform: translateY(10px);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.modal.active .modal-content {
+    transform: translateY(0);
 }
 
 /* Bouton de fermeture */
 .close {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 1.5rem;
-    color: white;
-    cursor: pointer;
-    transition: color 0.3s;
-    background: none;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
     border: none;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
 .close:hover {
-    color: #e74c3c;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.close::before,
+.close::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background: var(--text-color);
+}
+
+.close::before {
+    transform: rotate(45deg);
+}
+
+.close::after {
+    transform: rotate(-45deg);
 }
 
 /* Formulaire */
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
 }
 
 input,
-textarea,
-button[type="submit"] {
+textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
+    padding: 1rem;
+    border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1rem;
-    transition: border 0.3s;
+    transition: var(--transition);
+    background: #f9f9f9;
 }
 
 input:focus,
 textarea:focus {
-    border: 1px solid #4CAF50;
+    border-color: var(--secondary-color);
     outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: #777;
+    transition: var(--transition);
+    pointer-events: none;
+    background: #f9f9f9;
+    padding: 0 0.5rem;
+}
+
+input:focus+label,
+textarea:focus+label,
+input:not(:placeholder-shown)+label,
+textarea:not(:placeholder-shown)+label {
+    top: -0.6rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    background: white;
 }
 
 button[type="submit"] {
-    background-color: #ff5c5c;
+    background-color: var(--primary-color);
     color: white;
-    padding: 12px 20px;
+    padding: 1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.1rem;
-    transition: background-color 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    font-weight: 600;
+    transition: var(--transition);
+    margin-top: 1rem;
 }
 
 button[type="submit"]:hover {
-    background-color: #e74c3c;
-    /* Effet au survol */
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* MOBILE (petits écrans) */
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+
+    20% {
+        transform: scale(25, 25);
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .a-propos-texte {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    input,
+    textarea {
+        padding: 0.8rem;
+    }
+}
+
 @media (max-width: 480px) {
+    #a-propos {
+        padding: 3rem 1rem;
+    }
+
+    .a-propos-texte {
+        padding: 1.2rem;
+        text-align: left;
+    }
+
     .modal-content {
         width: 95%;
-        padding: 20px;
-        box-shadow: none;
-        /* Désactiver la shadow pour de meilleures performances */
+        padding: 1.2rem;
     }
 
     .close {
-        top: 15px;
-        right: 15px;
-    }
-
-    form {
-        gap: 15px;
-    }
-
-    button[type="submit"] {
-        padding: 10px 18px;
-        font-size: 1rem;
-    }
-}
-
-/* TABLETTE */
-@media (min-width: 481px) and (max-width: 768px) {
-    .modal-content {
-        width: 80%;
+        width: 2rem;
+        height: 2rem;
     }
 }

@@ -1,26 +1,75 @@
 import { Link } from "react-scroll";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faInfoCircle,
+  faBriefcase,
+  faEnvelope,
+  faTimes,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
 import "../styles/Header.css";
 import logo from "../assets/logo.png";
 
-// Utilisation de useCallback pour éviter la recréation des fonctions à chaque render
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Gestion du scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = useCallback(() => {
-    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
+    setMenuOpen((prev) => {
+      const newState = !prev;
+      if (newState) {
+        document.body.classList.add("menu-open");
+      } else {
+        document.body.classList.remove("menu-open");
+      }
+      return newState;
+    });
   }, []);
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
+    document.body.classList.remove("menu-open");
   }, []);
 
+  // Fermeture avec Escape
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && menuOpen) {
+        closeMenu();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen, closeMenu]);
+
   return (
-    <header>
-      <img className="logo" src={logo} alt="Logo LP Paysages" />
+    <header
+      className={`${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
+    >
+      <img
+        className="logo"
+        src={logo}
+        alt="Logo LP Paysages"
+        onClick={() => closeMenu()}
+      />
 
       <div className="nav-container">
-        <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
+        <nav
+          className={`nav-links ${menuOpen ? "active" : ""}`}
+          aria-label="Menu principal"
+          aria-hidden={!menuOpen}
+        >
           <ul>
             <li>
               <Link
@@ -29,8 +78,10 @@ const Header = () => {
                 duration={500}
                 onClick={closeMenu}
                 aria-label="Aller à la section Accueil"
+                tabIndex={menuOpen ? "0" : "-1"}
               >
-                <i className="fas fa-home" aria-hidden="true"></i> Accueil
+                <FontAwesomeIcon icon={faHome} aria-hidden="true" />
+                <span>Accueil</span>
               </Link>
             </li>
             <li>
@@ -40,9 +91,10 @@ const Header = () => {
                 duration={500}
                 onClick={closeMenu}
                 aria-label="Aller à la section À Propos"
+                tabIndex={menuOpen ? "0" : "-1"}
               >
-                <i className="fas fa-info-circle" aria-hidden="true"></i> À
-                Propos
+                <FontAwesomeIcon icon={faInfoCircle} aria-hidden="true" />
+                <span>À Propos</span>
               </Link>
             </li>
             <li>
@@ -52,9 +104,10 @@ const Header = () => {
                 duration={500}
                 onClick={closeMenu}
                 aria-label="Aller à la section Réalisations"
+                tabIndex={menuOpen ? "0" : "-1"}
               >
-                <i className="fas fa-briefcase" aria-hidden="true"></i>{" "}
-                Réalisations
+                <FontAwesomeIcon icon={faBriefcase} aria-hidden="true" />
+                <span>Réalisations</span>
               </Link>
             </li>
             <li>
@@ -64,27 +117,29 @@ const Header = () => {
                 duration={500}
                 onClick={closeMenu}
                 aria-label="Aller à la section Contact"
+                tabIndex={menuOpen ? "0" : "-1"}
               >
-                <i className="fas fa-envelope" aria-hidden="true"></i> Contact
+                <FontAwesomeIcon icon={faEnvelope} aria-hidden="true" />
+                <span>Contact</span>
               </Link>
             </li>
           </ul>
         </nav>
       </div>
 
-      <div
-        className="burger"
+      <button
+        className={`burger ${menuOpen ? "active" : ""}`}
         onClick={toggleMenu}
-        onKeyPress={(e) => e.key === "Enter" && toggleMenu()}
-        role="button"
-        aria-label="Menu"
-        tabIndex="0"
+        aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
         aria-expanded={menuOpen}
+        aria-controls="main-nav"
       >
-        <div className={`line1 ${menuOpen ? "toggle" : ""}`}></div>
-        <div className={`line2 ${menuOpen ? "toggle" : ""}`}></div>
-        <div className={`line3 ${menuOpen ? "toggle" : ""}`}></div>
-      </div>
+        {menuOpen ? (
+          <FontAwesomeIcon icon={faTimes} className="close-icon" size="lg" />
+        ) : (
+          <FontAwesomeIcon icon={faBars} className="menu-icon" size="lg" />
+        )}
+      </button>
     </header>
   );
 };

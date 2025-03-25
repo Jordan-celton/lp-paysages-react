@@ -1,168 +1,220 @@
-/* Section Réalisations */
+/* PROJECTS SECTION - Optimisé avec AOS */
 #projets {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f8f8f8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 5rem 1.5rem;
+    background-color: var(--bg-color);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Titre de la section */
 #projets h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 1rem;
 }
 
-/* Conteneur des cartes */
+#projets h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+/* Card Container */
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    /* Grille responsive */
-    gap: 20px;
-    justify-items: center;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 1200px;
-    /* Limite la largeur du conteneur */
-    padding: 0 20px;
-    /* Ajoute de l'espace sur les côtés */
-    box-sizing: border-box;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-/* Style de chaque carte */
+/* Project Card */
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
 .card {
-    background-color: white;
-    border-radius: 10px;
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    position: relative;
     overflow: hidden;
-    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Effet de survol sur la carte */
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
 }
 
-/* Image dans la carte */
 .card img {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
-    /* Pour garder l'image proportionnelle */
-    transition: transform 0.3s ease;
+    object-position: center;
+    transition: transform 0.5s ease;
 }
 
-/* Effet de zoom sur l'image lors du survol */
 .card:hover img {
     transform: scale(1.05);
 }
 
-/* Contenu de la carte (titre, description, bouton) */
+/* Card Content */
 .card-content {
-    padding: 15px;
+    padding: 1.5rem;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    justify-content: space-between;
 }
 
 .card-content h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #333;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.card-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--hover-color);
+    transition: var(--transition);
+}
+
+.card:hover h3::after {
+    width: 60px;
 }
 
 .card-content p {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 15px;
-    flex-grow: 1;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    flex: 1;
 }
 
-/* Bouton d'appel à l'action */
+/* CTA Button */
 .cta-button {
-    display: inline-block;
-    background-color: #ff5c5c;
+    align-self: flex-start;
+    background-color: var(--primary-color);
     color: white;
-    padding: 8px 16px;
+    padding: 0.8rem 1.5rem;
     border: none;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: 50px;
+    font-weight: 600;
     cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    transition: background-color 0.3s ease;
+    transition: var(--transition);
+    margin-top: auto;
 }
 
-/* Effet de survol sur le bouton */
 .cta-button:hover {
-    background-color: brown;
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Animation AOS (par défaut) */
+/* Animations AOS */
 [data-aos="fade-up"] {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transform: translateY(20px);
+    transition-property: transform, opacity;
 }
 
 [data-aos="fade-up"].aos-animate {
     opacity: 1;
+    transform: translateY(0);
 }
 
-/* Responsivité pour les écrans moyens (tablettes) */
+[data-aos="fade-left"] {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition-property: transform, opacity;
+}
+
+[data-aos="fade-left"].aos-animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+[data-aos="fade-right"] {
+    opacity: 0;
+    transform: translateX(20px);
+    transition-property: transform, opacity;
+}
+
+[data-aos="fade-right"].aos-animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
     .card-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px;
-    }
-
-    .card img {
-        height: 160px;
-    }
-
-    .card-content h3 {
-        font-size: 1.1rem;
-    }
-
-    .card-content p {
-        font-size: 0.9rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
-/* Responsivité pour les petits écrans (mobiles) */
 @media (max-width: 768px) {
-    .card-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 0 15px;
-        /* Ajouter du padding sur les côtés */
-    }
-
-    .card {
-        width: 100%;
-        max-width: 280px;
-        box-sizing: border-box;
-        margin: 0 auto;
-        /* Centrer les cartes sur les petits écrans */
+    #projets {
+        padding: 3rem 1rem;
     }
 
     .card img {
-        height: 150px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
     }
 
-    .card-content h3 {
-        font-size: 1rem;
+    #projets h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
     }
 
-    .card-content p {
-        font-size: 0.85rem;
+    .cta-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Accessibilité */
+.project-link:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    border-radius: var(--border-radius);
+}
+
+.card:focus-within {
+    box-shadow: 0 0 0 3px var(--hover-color);
+}
+
+/* Fallback Image */
+@supports (aspect-ratio: 16/9) {
+    .card img {
+        height: auto;
+        aspect-ratio: 16/9;
     }
 }
