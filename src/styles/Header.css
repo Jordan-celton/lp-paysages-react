@@ -124,11 +124,6 @@ header.scrolled {
     position: relative;
 }
 
-.burger:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 3px;
-}
-
 .close-icon,
 .menu-icon {
     color: var(--primary-color);

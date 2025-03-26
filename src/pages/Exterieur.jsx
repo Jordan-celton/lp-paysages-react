@@ -2,203 +2,165 @@ import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import HeaderPages from "../components/HeaderPages";
 import ImageModal from "../components/ImageModal";
-import "../styles/Pages.css";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
-
-// Importation des images
-import amenagement1 from "../assets/Aménagement extérieur/amenagement-1.webp";
-import amenagement2 from "../assets/Aménagement extérieur/amenagement-2.webp";
-import amenagement3 from "../assets/Aménagement extérieur/amenagement-3.webp";
-import amenagement4 from "../assets/Aménagement extérieur/amenagement-4.webp";
-import amenagement5 from "../assets/Aménagement extérieur/amenagement-5.webp";
-import amenagement6 from "../assets/Aménagement extérieur/amenagement-6.webp";
-import amenagement7 from "../assets/Aménagement extérieur/amenagement-7.webp";
-import amenagement9 from "../assets/Aménagement extérieur/amenagement-9.webp";
-import amenagement11 from "../assets/Aménagement extérieur/amenagement-11.webp";
-import terrasse5 from "../assets/Terrasse/terrasse-5.webp";
-
-// Données des images
-const imagesData = [
-  {
-    src: amenagement1,
-    category: "Paysager",
-    description:
-      "Création d'un jardin paysager esthétique et fonctionnel, adapté à votre environnement.",
-  },
-  {
-    src: amenagement2,
-    category: "paysager",
-    description:
-      "Aménagement extérieur sur mesure, adapté à vos besoins spécifiques et à votre terrain.",
-  },
-  {
-    src: amenagement3,
-    category: "Sur-mesure",
-    description:
-      "Aménagement sur mesure adapté à vos besoins spécifiques, que ce soit des allées ou des espaces de jeux.",
-  },
-  {
-    src: amenagement4,
-    category: "Paysager",
-    description:
-      "Jardin paysager personnalisé avec une sélection de plantes adaptées à votre espace.",
-  },
-  {
-    src: amenagement5,
-    category: "Sur-mesure",
-    description:
-      "Création d'un espace extérieur unique, réalisé sur mesure selon vos envies.",
-  },
-  {
-    src: amenagement6,
-    category: "Sur-mesure",
-    description:
-      "Aménagement extérieur unique, réalisé selon vos envies et les caractéristiques de votre terrain.",
-  },
-  {
-    src: amenagement7,
-    category: "Terrasses",
-    description:
-      "Aménagement paysager créatif pour transformer votre espace extérieur en un lieu harmonieux.",
-  },
-  {
-    src: terrasse5,
-    category: "Terrasses",
-    description:
-      "Terrasse en bois sur mesure, idéale pour profiter de votre extérieur en toute saison.",
-  },
-  {
-    src: amenagement9,
-    category: "Sur-mesure",
-    description:
-      "Aménagement extérieur sur mesure, adapté à vos besoins spécifiques et à votre terrain.",
-  },
-  {
-    src: amenagement11,
-    category: "Sur-mesure",
-    description:
-      "Aménagement extérieur sur mesure, adapté à vos besoins spécifiques et à votre terrain.",
-  },
-];
-
-// Catégories
-const categories = ["Tous", "Paysager", "Terrasses", "Sur-mesure"];
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMapMarkerAlt,
+  faCalendarAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { imagesData, categories, exterieurContent } from "../data/exterieur";
 
 const Exterieur = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("Tous");
+  const [loaded, setLoaded] = useState(false);
 
-  // Ouvrir la modale d'image
-  const openModal = (index) => setSelectedImageIndex(index);
-
-  // Fermer la modale d'image
-  const closeModal = () => setSelectedImageIndex(null);
-
-  // Fermer la modale avec la touche Escape
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") closeModal();
+    setLoaded(true);
+  }, []);
+
+  const openModal = (index) => {
+    setSelectedImageIndex(index);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeModal = () => {
+    setSelectedImageIndex(null);
+    document.body.style.overflow = "unset";
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") closeModal();
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Filtrer les images selon la catégorie sélectionnée
   const filteredImages =
     selectedCategory === "Tous"
       ? imagesData
-      : imagesData.filter((img) => img.category === selectedCategory);
+      : imagesData.filter(
+          (img) => img.category.toLowerCase() === selectedCategory.toLowerCase()
+        );
 
   return (
-    <div>
+    <div className={`exterieur-page ${loaded ? "loaded" : ""}`}>
       <Helmet>
-        <title>Aménagement extérieur | LP Paysages</title>
-        <meta
-          name="description"
-          content="Découvrez nos réalisations d'aménagements extérieurs autour de Quimper. LP Paysages vous accompagne pour créer votre espace extérieur idéal."
-        />
+        <title>{exterieurContent.meta.title}</title>
+        <meta name="description" content={exterieurContent.meta.description} />
+        <meta property="og:image" content={exterieurContent.meta.ogImage} />
+        <link rel="canonical" href={exterieurContent.meta.canonicalUrl} />
       </Helmet>
 
       <HeaderPages />
-      <main>
-        <section>
-          <h1>LP Paysages</h1>
-          <p>Voici quelques réalisations faites autour de Quimper.</p>
+
+      <main aria-label="Aménagements extérieurs par LP Paysages">
+        {/* Hero Section */}
+        <section
+          className="hero-section"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${exterieurContent.hero.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          data-aos="fade"
+        >
+          <div className="container">
+            <h1 data-aos="fade-up">{exterieurContent.hero.title}</h1>
+            <p className="subtitle" data-aos="fade-up" data-aos-delay="200">
+              {exterieurContent.hero.subtitle}
+            </p>
+          </div>
         </section>
 
-        {/* Section Nos services */}
-        <section>
-          <h2>Nos services</h2>
-          <p>
-            Chez LP Paysages, nous proposons des aménagements extérieurs adaptés
-            à vos besoins spécifiques. Que vous recherchiez un jardin paysager,
-            une terrasse en bois ou un espace extérieur personnalisé, nous avons
-            la solution idéale pour vous.
-          </p>
-          <div className="services-container">
-            <div className="service-item">
-              <h3>Aménagement paysager</h3>
-              <img src={amenagement1} alt="Aménagement paysager" />
-              <p>
-                Nous créons des jardins esthétiques et fonctionnels, en
-                choisissant des plantes et des matériaux adaptés à votre
-                environnement.
-              </p>
-            </div>
-            <div className="service-item">
-              <h3>Terrasses en bois</h3>
-              <img src={terrasse5} alt="Terrasse en bois" />
-              <p>
-                Offrez à votre extérieur une terrasse en bois élégante et
-                durable, réalisée sur mesure pour votre espace extérieur.
-              </p>
-            </div>
-            <div className="service-item">
-              <h3>Aménagement sur mesure</h3>
-              <img src={amenagement11} alt="Aménagement sur mesure" />
-              <p>
-                Chaque projet est unique, et nous nous adaptons à vos besoins
-                pour créer des aménagements sur mesure, selon vos envies et
-                contraintes.
-              </p>
+        {/* Services Section */}
+        <section className="services-section" data-aos="fade-up">
+          <div className="container">
+            <h2>{exterieurContent.services.title}</h2>
+            <p className="section-description">
+              {exterieurContent.services.description}
+            </p>
+
+            <div className="services-grid">
+              {exterieurContent.services.items.map((service, index) => (
+                <div
+                  key={index}
+                  className="service-card"
+                  data-aos="fade-up"
+                  data-aos-delay={`${index * 100}`}
+                >
+                  <div className="service-image-container">
+                    <img
+                      src={service.image}
+                      alt={service.altText}
+                      loading="lazy"
+                    />
+                  </div>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Section Réalisations avec filtre */}
-        <section>
-          <h2>Aménagements extérieurs</h2>
+        {/* Gallery Section */}
+        <section className="gallery-section" data-aos="fade-up">
+          <div className="container">
+            <h2>{exterieurContent.gallery.title}</h2>
+            <p className="section-description">
+              {exterieurContent.gallery.description}
+            </p>
 
-          <div className="filters">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={selectedCategory === category ? "active" : ""}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          <div className="grid-container">
-            {filteredImages.map((image, index) => (
-              <div key={index} className="grid-item">
-                <img
-                  src={image.src}
-                  alt={`Aménagement extérieur ${index + 1}`}
-                  loading="lazy"
-                  onClick={() => openModal(index)}
-                  role="button"
-                  tabIndex="0"
-                  aria-label={`Agrandir l'image de l'aménagement extérieur ${
-                    index + 1
+            <div className="filters">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`filter-btn ${
+                    selectedCategory === category ? "active" : ""
                   }`}
-                />
-                <div className="image-caption">{image.description}</div>
-              </div>
-            ))}
+                  aria-label={`Filtrer par ${category}`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+
+            <div className="gallery-grid">
+              {filteredImages.map((image, index) => (
+                <article
+                  key={index}
+                  className="gallery-item"
+                  data-aos="fade-up"
+                  data-aos-delay={`${(index % 4) * 100}`}
+                >
+                  <figure>
+                    <img
+                      src={image.src}
+                      alt={image.description}
+                      loading="lazy"
+                      onClick={() => openModal(index)}
+                      aria-label={`Voir ${image.description} en grand`}
+                    />
+                    <figcaption>
+                      <h3>{image.description}</h3>
+                      <div className="image-meta">
+                        <span>
+                          <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
+                          {image.location}
+                        </span>
+                        <span>
+                          <FontAwesomeIcon icon={faCalendarAlt} /> {image.year}
+                        </span>
+                      </div>
+                    </figcaption>
+                  </figure>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -207,11 +169,11 @@ const Exterieur = () => {
 
       <Footer />
 
-      {/* Modal d'affichage des images */}
       {selectedImageIndex !== null && (
         <ImageModal
           images={filteredImages.map((img) => img.src)}
           selectedImageIndex={selectedImageIndex}
+          descriptions={filteredImages.map((img) => img.description)}
           onClose={closeModal}
         />
       )}

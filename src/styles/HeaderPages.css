@@ -30,12 +30,6 @@ header.scrolled {
     z-index: 1001;
 }
 
-.logo:hover,
-.logo:focus {
-    transform: scale(1.1);
-    outline: none;
-}
-
 /* Navigation */
 .nav-container {
     display: flex;
@@ -162,6 +156,7 @@ header.scrolled {
         height: 100vh;
         pointer-events: none;
         z-index: 1000;
+        margin: 0;
     }
 
     .nav-links {

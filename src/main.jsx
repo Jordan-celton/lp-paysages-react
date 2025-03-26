@@ -6,11 +6,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-// Initialisation d'AOS avec des options personnalisées
 AOS.init({
-  duration: 1000, // Durée de l'animation
-  easing: "ease-in-out", // Type de courbe d'animation
-  once: true, // Animation qui se produit une seule fois
+  duration: 800,
+  easing: "ease-out-quart",
+  once: false, // <- Changement important : permet de rejouer les animations
+  offset: 120, // Déclenchement un peu plus tôt
+  delay: 0, // Pas de délai initial
+  mirror: true, // Anime aussi lors du scroll up
 });
 
 // Vérification si l'élément #root existe avant de créer la racine

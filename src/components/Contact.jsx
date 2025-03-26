@@ -4,30 +4,30 @@ const Contact = () => {
   return (
     <section id="contact">
       <h2>Contactez-nous</h2>
-      <p class="intro-text">
+      <p className="intro-text">
         Nous sommes à votre disposition pour répondre à toutes vos questions.
       </p>
 
-      <div class="contact-info">
-        <div class="contact-grid">
-          <div class="info-block">
-            <i class="fas fa-phone"></i>
+      <div className="contact-info">
+        <div className="contact-grid">
+          <div className="info-block">
+            <i className="fas fa-phone"></i>
             <h3>Téléphone</h3>
-            <a href="tel:+33123456789" class="contact-link">
+            <a href="tel:+33123456789" className="contact-link">
               06 33 27 20 41
             </a>
           </div>
 
-          <div class="info-block">
-            <i class="fas fa-envelope"></i>
+          <div className="info-block">
+            <i className="fas fa-envelope"></i>
             <h3>Email</h3>
-            <a href="mailto:contact@example.com" class="contact-link">
+            <a href="mailto:contact@example.com" className="contact-link">
               perennecludovic@gmail.com
             </a>
           </div>
 
-          <div class="info-block">
-            <i class="fas fa-map-marker-alt"></i>
+          <div className="info-block">
+            <i className="fas fa-map-marker-alt"></i>
             <h3>Adresse</h3>
             <p>19 Allée des Primevères</p>
           </div>
