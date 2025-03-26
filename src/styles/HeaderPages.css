@@ -1,18 +1,19 @@
-/* Base Styles */
+/* ===== HEADER STYLES ===== */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: var(--header-height);
+    background-color: var(--bg-color);
+    box-shadow: var(--shadow);
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-color: var(--bg-color);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease;
+    animation: headerScroll 0.5s ease-out;
 }
 
 header.scrolled {
@@ -20,17 +21,22 @@ header.scrolled {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo Styles */
 .logo {
     height: 80px;
     width: 80px;
     border-radius: 50%;
     object-fit: cover;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed) ease;
     z-index: 1001;
+    cursor: pointer;
 }
 
-/* Navigation */
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation Container */
 .nav-container {
     display: flex;
     align-items: center;
@@ -38,8 +44,11 @@ header.scrolled {
     margin: 30px;
 }
 
+/* Navigation Links */
 .nav-links {
     list-style: none;
+    display: flex;
+    gap: var(--nav-gap);
     margin: 0;
     padding: 0;
 }
@@ -56,30 +65,33 @@ header.scrolled {
     position: relative;
 }
 
+.nav-links a,
 .nav-links button {
-    background: none;
-    border: none;
-    color: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
     font-size: 1.1rem;
     font-weight: 500;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all var(--transition-speed);
+    transition: all var(--transition-speed) ease;
     padding: 8px 0;
+    background: none;
+    border: none;
     cursor: pointer;
 }
 
-.nav-links button:hover,
-.nav-links button:focus {
-    color: var(--hover-color);
-    outline: none;
+.nav-links a:hover,
+.nav-links button:hover {
+    color: var(--primary-color);
 }
 
+.nav-links a span,
 .nav-links button span {
     position: relative;
 }
 
+.nav-links a span::after,
 .nav-links button span::after {
     content: '';
     position: absolute;
@@ -87,10 +99,12 @@ header.scrolled {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--hover-color);
-    transition: width var(--transition-speed);
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed) ease;
 }
 
+.nav-links a:hover span::after,
+.nav-links a:focus span::after,
 .nav-links button:hover span::after,
 .nav-links button:focus span::after {
     width: 100%;
@@ -98,11 +112,12 @@ header.scrolled {
 
 .nav-links .svg-inline--fa {
     font-size: 0.9em;
+    color: var(--primary-color);
     transition: transform 0.3s ease;
 }
 
-.nav-links button:hover .svg-inline--fa,
-.nav-links button:focus .svg-inline--fa {
+.nav-links a:hover .svg-inline--fa,
+.nav-links button:hover .svg-inline--fa {
     transform: translateY(-2px);
 }
 
@@ -118,12 +133,14 @@ header.scrolled {
     z-index: 1001;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .close-icon,
 .menu-icon {
     color: var(--primary-color);
     transition: all var(--transition-speed) ease;
+    font-size: 1.5rem;
 }
 
 .close-icon:hover,
@@ -132,14 +149,10 @@ header.scrolled {
 }
 
 .close-icon {
-    font-size: 1.8rem;
+    animation: rotateIn 0.3s ease-out;
 }
 
-.menu-icon {
-    font-size: 1.5rem;
-}
-
-/* Mobile Styles */
+/* Mobile Menu Styles */
 @media (max-width: 1024px) {
     .burger {
         display: flex;
@@ -167,7 +180,6 @@ header.scrolled {
         height: 100%;
         background-color: var(--bg-color);
         backdrop-filter: blur(10px);
-        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -190,6 +202,7 @@ header.scrolled {
         width: 100%;
     }
 
+    .nav-links a,
     .nav-links button {
         font-size: 1.5rem;
         padding: 12px 24px;
@@ -202,9 +215,77 @@ header.scrolled {
     body.menu-open {
         overflow: hidden;
     }
+
+    .nav-links.active li {
+        animation: fadeIn 0.5s ease forwards;
+    }
+
+    .nav-links.active li:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .nav-links.active li:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .nav-links.active li:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header {
+        padding: 0 3%;
+    }
+
+    .nav-links a,
+    .nav-links button {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 40px;
+        width: 40px;
+    }
+
+    .nav-links {
+        padding-top: 70px;
+    }
+
+    .nav-links a,
+    .nav-links button {
+        font-size: 1.2rem;
+        padding: 8px 15px;
+    }
+}
+
+/* Accessibility Improvements */
+.nav-links a:focus,
+.nav-links button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.burger:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
 }
 
 /* Animations */
+@keyframes headerScroll {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -217,27 +298,6 @@ header.scrolled {
     }
 }
 
-.nav-links.active li {
-    animation: fadeIn 0.5s ease forwards;
-}
-
-.nav-links.active li:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.nav-links.active li:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.nav-links.active li:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-/* Close Button Animation */
-.close-icon {
-    animation: rotateIn 0.3s ease-out;
-}
-
 @keyframes rotateIn {
     from {
         opacity: 0;
@@ -248,4 +308,9 @@ header.scrolled {
         opacity: 1;
         transform: rotate(0);
     }
+}
+
+/* Smooth transitions for mobile menu */
+.nav-links {
+    will-change: transform, opacity;
 }

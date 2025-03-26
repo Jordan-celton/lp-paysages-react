@@ -9,7 +9,7 @@ import {
   faTimes,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-import "../styles/Header.css";
+import "../styles/HeaderPages.css";
 import logo from "../assets/logo.png";
 
 const Header = () => {
