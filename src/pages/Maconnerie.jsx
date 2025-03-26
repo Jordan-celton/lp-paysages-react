@@ -41,7 +41,9 @@ const Maconnerie = () => {
   const filteredImages =
     selectedCategory === "Tous"
       ? imagesData
-      : imagesData.filter((img) => img.category === selectedCategory);
+      : imagesData.filter(
+          (img) => img.category.toLowerCase() === selectedCategory.toLowerCase()
+        );
 
   return (
     <div className={`maconnerie-page ${loaded ? "loaded" : ""}`}>
@@ -55,9 +57,56 @@ const Maconnerie = () => {
       <HeaderPages />
 
       <main aria-label="Réalisations en maçonnerie par LP Paysages">
-        {/* ... autres sections ... */}
+        {/* Hero Section */}
+        <section
+          className="hero-section"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${maconnerieContent.hero.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          data-aos="fade"
+        >
+          <div className="container">
+            <h1 data-aos="fade-up">{maconnerieContent.hero.title}</h1>
+            <p className="subtitle" data-aos="fade-up" data-aos-delay="200">
+              {maconnerieContent.hero.subtitle}
+            </p>
+          </div>
+        </section>
 
-        {/* Section Gallery corrigée */}
+        {/* Services Section */}
+        <section className="services-section" data-aos="fade-up">
+          <div className="container">
+            <h2>{maconnerieContent.services.title}</h2>
+            <p className="section-description">
+              {maconnerieContent.services.description}
+            </p>
+
+            <div className="services-grid">
+              {maconnerieContent.services.items.map((service, index) => (
+                <div
+                  key={index}
+                  className="service-card"
+                  data-aos="fade-up"
+                  data-aos-delay={`${index * 100}`}
+                >
+                  <div className="service-image-container">
+                    <img
+                      src={service.image}
+                      alt={service.altText}
+                      loading="lazy"
+                    />
+                  </div>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery Section */}
         <section className="gallery-section" data-aos="fade-up">
           <div className="container">
             <h2>{maconnerieContent.gallery.title}</h2>
@@ -74,7 +123,6 @@ const Maconnerie = () => {
                     selectedCategory === category ? "active" : ""
                   }`}
                   aria-label={`Filtrer par ${category}`}
-                  // Pas de aria-hidden ici
                 >
                   {category}
                 </button>
@@ -87,7 +135,7 @@ const Maconnerie = () => {
                   key={index}
                   className="gallery-item"
                   data-aos="fade-up"
-                  data-aos-delay={`${(index % 3) * 100}`}
+                  data-aos-delay={`${(index % 4) * 100}`}
                 >
                   <figure>
                     <img
