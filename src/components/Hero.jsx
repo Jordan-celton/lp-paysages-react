@@ -4,13 +4,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../styles/Hero.css";
+// Import des images optimisées
 import ImageHero1 from "../assets/Aménagement extérieur/amenagement-1.webp";
 import ImageHero2 from "../assets/Clotûres/cloture_1.webp";
 import ImageHero3 from "../assets/Murs/mur-1.webp";
 import { useEffect } from "react";
 
 const Hero = () => {
-  // Préchargement des images dans un useEffect
+  // Préchargement des images
   useEffect(() => {
     const images = [ImageHero1, ImageHero2, ImageHero3];
     images.forEach((src) => {
@@ -32,16 +33,17 @@ const Hero = () => {
         lazyPreloadPrevNext={1}
         initialSlide={0}
         className="swiper-container"
-        aria-live="polite" // Amélioration accessibilité
+        aria-live="polite"
       >
         <SwiperSlide>
           <img
             src={ImageHero1}
             alt="Aménagement extérieur avec des plantations et des allées"
-            loading="lazy"
+            loading="eager" // Changé de lazy à eager pour la première image
             width="1920"
             height="1080"
             style={{ objectFit: "cover" }}
+            decoding="async" // Ajout pour le décodage
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -52,6 +54,7 @@ const Hero = () => {
             width="1920"
             height="1080"
             style={{ objectFit: "cover" }}
+            decoding="async"
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -62,6 +65,7 @@ const Hero = () => {
             width="1920"
             height="1080"
             style={{ objectFit: "cover" }}
+            decoding="async"
           />
         </SwiperSlide>
       </Swiper>

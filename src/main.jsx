@@ -7,8 +7,8 @@ import "aos/dist/aos.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 AOS.init({
-  duration: 800,
-  easing: "ease-out-quart",
+  duration: 1800,
+  easing: "ease-in-out",
   once: false, // <- Changement important : permet de rejouer les animations
   offset: 120, // Déclenchement un peu plus tôt
   delay: 0, // Pas de délai initial
