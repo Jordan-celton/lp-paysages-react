@@ -10,6 +10,7 @@ import {
   faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { imagesData, categories, maconnerieContent } from "../data/maconnerie";
+import "../styles/Pages.css";
 
 const Maconnerie = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);

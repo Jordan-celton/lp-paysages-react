@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useCallback, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -13,60 +13,75 @@ import logo from "../assets/logo.png";
 
 const HeaderPages = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef(null);
 
-  // Gestion du scroll
+  // Gestion du scroll pour l'effet visuel du header
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Navigation et scroll
+  // Fonction pour scroller vers une section en compensant la hauteur du header
+  const scrollToSection = useCallback((sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = headerRef.current?.offsetHeight || 0;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  }, []);
+
+  // Gestion de la navigation
   const handleNavigation = useCallback(
-    (hash) => {
-      if (window.location.pathname === "/") {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
+    (sectionId) => {
+      if (location.pathname === "/") {
+        // Si déjà sur la page d'accueil
+        closeMenu();
+        scrollToSection(sectionId);
       } else {
-        navigate("/", { state: { targetSection: hash } });
-      }
-      closeMenu();
-    },
-    [navigate]
-  );
-
-  // Gestion du menu
-  const toggleMenu = useCallback(() => {
-    setMenuOpen((prev) => !prev);
-  }, []);
-
-  const closeMenu = useCallback(() => {
-    setMenuOpen(false);
-  }, []);
-
-  // Fermeture avec Escape
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape" && menuOpen) {
+        // Si sur une autre page, navigation vers l'accueil avec hash
+        navigate(`/#${sectionId}`);
         closeMenu();
       }
-    };
+    },
+    [location.pathname, navigate, scrollToSection]
+  );
 
+  // Gestion du scroll après navigation
+  useEffect(() => {
+    if (location.hash) {
+      const sectionId = location.hash.substring(1); // Retire le #
+      const timer = setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash, scrollToSection]);
+
+  // Gestion du menu mobile
+  const toggleMenu = useCallback(() => setMenuOpen((prev) => !prev), []);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  // Fermeture du menu avec Escape
+  useEffect(() => {
+    const handleKeyDown = (e) => e.key === "Escape" && menuOpen && closeMenu();
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen, closeMenu]);
 
-  // Fermeture en cliquant à l'extérieur
+  // Fermeture du menu en cliquant à l'extérieur
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -77,24 +92,26 @@ const HeaderPages = () => {
         closeMenu();
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen, closeMenu]);
 
   return (
     <header
+      ref={headerRef}
       className={`${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
     >
+      {/* Logo cliquable */}
       <img
         className="logo"
         src={logo}
-        alt="Logo"
+        alt="Logo LP Paysages"
         onClick={() => handleNavigation("accueil")}
         tabIndex="0"
         onKeyDown={(e) => e.key === "Enter" && handleNavigation("accueil")}
       />
 
+      {/* Navigation principale */}
       <div className="nav-container">
         <nav
           className={`nav-links ${menuOpen ? "active" : ""}`}
@@ -137,6 +154,7 @@ const HeaderPages = () => {
         </nav>
       </div>
 
+      {/* Bouton menu mobile */}
       <button
         className={`burger ${menuOpen ? "active" : ""}`}
         onClick={toggleMenu}

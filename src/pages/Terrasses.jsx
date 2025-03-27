@@ -14,7 +14,7 @@ import {
   faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { terrasseImages, categories, terrasseContent } from "../data/terrasses";
-import "../styles/Terrasses.css";
+import "../styles/Pages.css";
 
 const Terrasses = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);

@@ -25,12 +25,14 @@
     position: absolute;
     top: 20px;
     right: 20px;
+    width: 2.5rem;
+    height: 2.5rem;
     font-size: 2rem;
-    color: white;
+    color: black;
     cursor: pointer;
     z-index: 1001;
-    background: none;
     border: none;
+    border-radius: 50%;
 }
 
 .close:hover {

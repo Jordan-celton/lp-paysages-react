@@ -10,6 +10,7 @@ import {
   faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { imagesData, categories, exterieurContent } from "../data/exterieur";
+import "../styles/Pages.css";
 
 const Exterieur = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);

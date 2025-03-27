@@ -60,29 +60,37 @@ const ProjectCard = ({
   description,
   buttonLabel,
   animation,
-}) => (
-  <Link
-    to={to}
-    aria-label={`Voir les projets de ${title.toLowerCase()}`}
-    className="project-link"
-  >
-    <div className="card" data-aos={animation}>
-      <img
-        src={imgSrc}
-        alt={imgAlt}
-        loading="lazy"
-        width="100%"
-        height="auto"
-        onError={(e) => (e.target.src = "/images/fallback-image.jpg")}
-      />
-      <div className="card-content">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <button className="cta-button">{buttonLabel}</button>
+}) => {
+  const handleClick = () => {
+    // Scroll immédiat vers le haut sans animation
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <Link
+      to={to}
+      onClick={handleClick}
+      aria-label={`Voir les projets de ${title.toLowerCase()}`}
+      className="project-link"
+    >
+      <div className="card" data-aos={animation}>
+        <img
+          src={imgSrc}
+          alt={imgAlt}
+          loading="lazy"
+          width="100%"
+          height="auto"
+          onError={(e) => (e.target.src = "/images/fallback-image.jpg")}
+        />
+        <div className="card-content">
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <button className="cta-button">{buttonLabel}</button>
+        </div>
       </div>
-    </div>
-  </Link>
-);
+    </Link>
+  );
+};
 
 // Définition des types de propriétés
 ProjectCard.propTypes = {
