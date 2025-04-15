@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import HeaderPages from "../components/HeaderPages";
+import HeaderPages from "../components/Header/Header";
 import ImageModal from "../components/ImageModal";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";

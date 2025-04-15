@@ -14,8 +14,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('votre-image-de-fond-optionnelle.webp') center/cover no-repeat;
-    opacity: 0.03;
+    background: url('../assets/Background/pexels-sejio402-29288279.webp') center/cover no-repeat;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
     z-index: 0;
 }
 
@@ -28,7 +28,7 @@
 #contact h2 {
     font-size: clamp(1.8rem, 5vw, 2.5rem);
     margin-bottom: 1.5rem;
-    color: var(--primary-color, #ff5c5c);
+    color: var(--bg-color);
     position: relative;
     display: inline-block;
 }
@@ -41,14 +41,14 @@
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: var(--primary-color);
+    background: var(--bg-color);
     transition: width 0.3s ease;
 }
 
 /* Texte d'introduction */
 #contact .intro-text {
     font-size: 1.1rem;
-    color: var(--text-medium, #555);
+    color: var(--bg-color);
     max-width: 800px;
     margin: 0 auto 2rem;
     line-height: 1.7;

@@ -1,147 +1,113 @@
-/* TÉMOIGNAGES SECTION - Carrousel amélioré */
+/* Testimonials.css */
+
+/* Conteneur principal */
 #temoignages {
-    background-color: var(--light-accent, wheat);
-    padding: 4rem 1rem;
+    padding: 5rem 2rem;
+    background-color: #f8f9fa;
     position: relative;
+    overflow: hidden;
 }
 
-/* Titre section */
+/* Titre */
 #temoignages h2 {
     text-align: center;
+    font-size: 2.5rem;
     margin-bottom: 3rem;
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
     color: var(--primary-color);
     position: relative;
+    font-weight: 600;
 }
 
 #temoignages h2::after {
     content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
     width: 80px;
-    height: 3px;
+    height: 4px;
     background: var(--primary-color);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
 }
 
 /* Conteneur du carrousel */
 .carousel-container {
-    width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 2rem 0;
     position: relative;
+    padding: 0 40px;
 }
 
-/* Style pour chaque élément du carrousel */
+/* Élément de témoignage */
 .carousel-item {
-    text-align: center;
+    background: white;
+    border-radius: 12px;
     padding: 2.5rem;
-    background-color: var(--bg-color, #fff);
-    border-radius: var(--border-radius, 12px);
-    box-shadow: var(--card-shadow, 0 4px 12px rgba(0, 0, 0, 0.1));
-    transition: var(--transition, all 0.3s ease);
-    margin: 0 1rem;
-    position: relative;
-    overflow: hidden;
-    will-change: transform;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.carousel-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--primary-color);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
+/* Effet au survol */
+.carousel-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
-/* Style du texte du témoignage */
+/* Texte du témoignage */
 .review-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
     font-style: italic;
-    font-size: 1.2rem;
-    color: var(--text-light, #555);
     margin-bottom: 1.5rem;
-    line-height: 1.7;
     position: relative;
-    padding: 0 1rem;
-}
-
-.review-text::before,
-.review-text::after {
-    content: '"';
-    font-size: 2rem;
-    color: var(--primary-color);
-    opacity: 0.3;
-    position: absolute;
+    padding-left: 1.5rem;
 }
 
 .review-text::before {
-    top: -15px;
-    left: -5px;
+    content: '"';
+    font-size: 4rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+    position: absolute;
+    left: -1rem;
+    top: -1.5rem;
+    font-family: Georgia, serif;
 }
 
-.review-text::after {
-    bottom: -25px;
-    right: -5px;
-}
-
-/* Style de l'auteur du témoignage */
+/* Auteur du témoignage */
 .review-author {
-    font-size: 1.1rem;
     font-weight: 600;
     color: var(--primary-color);
-    margin-top: 1rem;
-    position: relative;
-    display: inline-block;
+    text-align: right;
+    font-size: 1rem;
+    margin-top: auto;
 }
 
-.review-author::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background: var(--hover-color, #e07a5f);
-}
-
-/* Style de la pagination */
-.swiper-pagination {
-    position: relative;
-    margin-top: 2rem;
-}
-
+/* Pagination */
 .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
-    background-color: var(--primary-color);
-    opacity: 0.5;
-    transition: var(--transition);
+    background: #bdc3c7;
+    opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
-    background-color: var(--primary-color);
-    opacity: 1;
-    transform: scale(1.2);
+    background: var(--primary-color);
 }
 
 /* Navigation */
 .swiper-button-next,
 .swiper-button-prev {
-    color: var(--primary-color);
-    background: rgba(255, 255, 255, 0.8);
+    color: #27ae60;
     width: 40px;
     height: 40px;
+    background: white;
     border-radius: 50%;
-    backdrop-filter: blur(5px);
-    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .swiper-button-next::after,
@@ -149,73 +115,45 @@
     font-size: 1.2rem;
 }
 
-/* Effet de survol */
-.carousel-item:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--hover-shadow, 0 8px 24px rgba(0, 0, 0, 0.15));
-}
-
-.carousel-item:hover::before {
-    transform: scaleX(1);
-}
-
-/* Accessibilité */
-.carousel-item:focus-within {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 3px;
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: #27ae60;
+    color: white;
+    transform: scale(1.1);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+    #temoignages {
+        padding: 3rem 1rem;
+    }
+
     .carousel-container {
-        padding: 1rem 0;
+        padding: 0 20px;
     }
 
     .carousel-item {
         padding: 1.5rem;
-        margin: 0 0.5rem;
-    }
-
-    .review-text {
-        font-size: 1.1rem;
-        padding: 0;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
-    #temoignages {
-        padding: 3rem 0.5rem;
-    }
-
-    .carousel-item {
-        padding: 1.2rem;
     }
 
     .review-text {
         font-size: 1rem;
     }
-
-    .review-author {
-        font-size: 1rem;
-    }
 }
 
-/* Animations */
+/* Animation d'entrée */
 @keyframes fadeIn {
     from {
         opacity: 0;
+        transform: translateY(20px);
     }
 
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-.swiper-slide {
-    animation: fadeIn 0.6s ease-out forwards;
+.carousel-item {
+    animation: fadeIn 0.6s ease forwards;
 }

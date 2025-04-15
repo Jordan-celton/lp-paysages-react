@@ -6,11 +6,23 @@
     overflow: hidden;
 }
 
+#services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/Background/pexels-sejio402-29288279.webp') center/cover no-repeat;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
 #services h2 {
     text-align: center;
     margin-bottom: 3rem;
     font-size: clamp(1.8rem, 5vw, 2.5rem);
-    color: var(--primary-color);
+    color: var(--bg-color);
     position: relative;
     padding-bottom: 1rem;
 }
@@ -23,7 +35,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: var(--primary-color);
+    background: var(--bg-color);
     transition: var(--transition);
 }
 

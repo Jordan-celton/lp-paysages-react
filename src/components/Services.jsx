@@ -48,7 +48,7 @@ const Services = () => {
             role="img"
             alt="Icône feuille représentant le service d'entretien des jardins"
           />
-          <h3>Entretien</h3>
+          <h3>Entretien Jardin</h3>
           <p>
             Des services d'entretien réguliers pour garder votre jardin en
             parfait état toute l'année. Nous proposons des contrats annuels ou

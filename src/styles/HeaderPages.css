@@ -141,6 +141,7 @@ header.scrolled {
     color: var(--primary-color);
     transition: all var(--transition-speed) ease;
     font-size: 1.5rem;
+    height: 30px;
 }
 
 .close-icon:hover,
@@ -157,7 +158,6 @@ header.scrolled {
     .burger {
         display: flex;
         position: fixed;
-        top: 20px;
         right: 20px;
     }
 
@@ -243,12 +243,17 @@ header.scrolled {
     .nav-links button {
         font-size: 1.3rem;
     }
+
+    .logo {
+        height: 80px;
+        width: 120px;
+    }
 }
 
 @media (max-width: 480px) {
     .logo {
-        height: 40px;
-        width: 40px;
+        height: 65px;
+        width: 120px;
     }
 
     .nav-links {
@@ -260,14 +265,6 @@ header.scrolled {
         font-size: 1.2rem;
         padding: 8px 15px;
     }
-}
-
-/* Accessibility Improvements */
-.nav-links a:focus,
-.nav-links button:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 4px;
-    border-radius: 4px;
 }
 
 .burger:focus-visible {

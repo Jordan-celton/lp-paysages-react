@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import React, { Suspense } from "react";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import Hero from "../components/Hero";
 
 // Lazy load des autres composants
