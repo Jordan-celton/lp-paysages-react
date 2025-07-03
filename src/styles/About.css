@@ -1,7 +1,7 @@
 /* Réinitialisation et styles de base */
 #a-propos {
     padding: 4rem 1.5rem;
-    background-color: var(--bg-color);
+    background-color: #fffaf6;
     text-align: center;
     position: relative;
     overflow: hidden;

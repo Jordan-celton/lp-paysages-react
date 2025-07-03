@@ -1,30 +1,21 @@
-/* Style global pour la section Hero */
-#accueil {
+/* SECTION HERO GLOBALE */
+.hero-section {
   position: relative;
-  overflow: hidden;
   height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Swiper container */
-.swiper-container {
   width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 2;
-  overflow: visible !important;
+  overflow: hidden;
 }
 
-/* Swiper Slides */
+/* SLIDER */
+.swiper-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
 .swiper-slide {
   display: flex;
   justify-content: center;
@@ -35,75 +26,88 @@
   width: 100%;
   height: 100vh;
   object-fit: cover;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transition: transform 0.5s ease;
 }
 
 .swiper-slide img:hover {
   transform: scale(1.05);
-  /* Légère animation de zoom lors du survol */
 }
 
-/* Enlever le background des boutons de navigation */
+/* NAVIGATION SWIPER (flèches) */
 .swiper-button-prev,
 .swiper-button-next {
-  background: none !important;
   color: #fff !important;
+  background: none !important;
+  z-index: 10;
 }
 
-/* Contenu de la section Hero */
+/* OVERLAY (dégradé sombre) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
+  z-index: 2;
+}
+
+/* CONTENU PAR-DESSUS */
 .hero-content {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  left: 8%;
+  transform: translateY(-50%);
+  z-index: 3;
   color: white;
-  z-index: 10;
-  padding: 0 20px;
-  background: rgba(0, 0, 0, 0.3);
-  /* Ajouter un léger fond sombre pour améliorer la lisibilité */
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  /* Ombre pour ajouter de la profondeur */
+  max-width: 600px;
 }
 
+/* TITRE */
 .hero-content h1 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   margin-bottom: 20px;
-  font-weight: bold;
+  font-weight: 800;
+  line-height: 1.2;
   text-transform: uppercase;
 }
 
+.hero-content h1 span {
+  color: var(--primary-hover);
+}
+
+/* PARAGRAPHE */
 .hero-content p {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-bottom: 30px;
   line-height: 1.6;
 }
 
+/* BOUTON CTA */
 .cta-button-hero {
-  background-color: #ff5c5c;
+  display: inline-block;
+  padding: 16px 32px;
+  background-color: var(--primary-hover);
   color: white;
-  padding: 15px 30px;
   font-size: 1.1rem;
+  font-weight: bold;
   text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .cta-button-hero:hover {
-  background-color: brown;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  /* Ombre plus marquée au survol */
+  background-color: var(--hover-color);
+  transform: scale(1.05);
 }
 
-/* Responsivité */
+/* RESPONSIVE */
 
 /* Tablette */
 @media (max-width: 1024px) {
+  .hero-content {
+    left: 5%;
+  }
+
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .hero-content p {
@@ -111,15 +115,21 @@
   }
 
   .cta-button-hero {
-    padding: 12px 25px;
+    padding: 14px 28px;
     font-size: 1rem;
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
+  .hero-content {
+    left: 3%;
+    text-align: center;
+    width: 90%;
+  }
+
   .hero-content h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .hero-content p {
@@ -127,7 +137,7 @@
   }
 
   .cta-button-hero {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+    padding: 12px 24px;
+    font-size: 0.95rem;
   }
 }

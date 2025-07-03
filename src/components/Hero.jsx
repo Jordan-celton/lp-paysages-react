@@ -21,7 +21,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="accueil">
+    <section id="accueil" className="hero-section">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={10}
@@ -30,8 +30,6 @@ const Hero = () => {
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop={true}
-        lazyPreloadPrevNext={1}
-        initialSlide={0}
         className="swiper-container"
         aria-live="polite"
       >
@@ -39,11 +37,11 @@ const Hero = () => {
           <img
             src={ImageHero1}
             alt="Aménagement extérieur avec des plantations et des allées"
-            loading="eager" // Changé de lazy à eager pour la première image
+            loading="eager"
             width="1920"
             height="1080"
             style={{ objectFit: "cover" }}
-            decoding="async" // Ajout pour le décodage
+            decoding="async"
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -70,6 +68,8 @@ const Hero = () => {
         </SwiperSlide>
       </Swiper>
 
+      {/* Contenu texte par-dessus Swiper */}
+      <div className="hero-overlay" />
       <div className="hero-content">
         <h1>
           Bienvenue chez <span>LP Paysages</span>
@@ -77,6 +77,9 @@ const Hero = () => {
         <p>
           Transformez votre espace extérieur avec nos solutions paysagères sur
           mesure.
+          <br />
+          De l&apos;aménagement de jardins à la création de murs paysagers, nous
+          sommes là pour réaliser vos rêves paysagers.
         </p>
         <a href="#contact" className="cta-button-hero">
           Contactez-nous

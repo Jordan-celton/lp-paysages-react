@@ -9,7 +9,7 @@ header {
     box-shadow: var(--shadow);
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 15px;
     transition: all var(--transition-speed) ease;

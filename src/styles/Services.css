@@ -1,207 +1,188 @@
-/* SERVICES SECTION - Optimisé avec animations AOS */
+/* SECTION - Fond général */
 #services {
-    padding: 5rem 1.5rem;
-    background-color: var(--bg-color);
-    position: relative;
-    overflow: hidden;
+  padding: 5rem 1.5rem;
+  background-color: var(--bg-color);
+  position: relative;
+  overflow: hidden;
+  height: 700px;
 }
 
 #services::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../assets/Background/pexels-sejio402-29288279.webp') center/cover no-repeat;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
-    z-index: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../assets/Background/pexels-sejio402-29288279.webp') center/cover no-repeat;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
+  z-index: 0;
 }
 
 #services h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    color: var(--bg-color);
-    position: relative;
-    padding-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: var(--bg-color);
+  position: relative;
+  padding-bottom: 1rem;
 }
 
 #services h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: var(--bg-color);
-    transition: var(--transition);
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--bg-color);
+  transition: var(--transition);
 }
 
-/* Service Container */
+/* Grille */
 .service-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* Service Card */
+/* === CARTE SERVICE FLIP === */
 .service {
-    background: var(--bg-color);
-    padding: 2.5rem 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    text-align: center;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    will-change: transform;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+  perspective: 1000px;
+  height: 400px;
 }
 
-.service::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--primary-color);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
+.service-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
 }
 
-.service:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--hover-shadow);
+.service:hover .service-inner {
+  transform: rotateY(180deg);
 }
 
-.service:hover::before {
-    transform: scaleX(1);
+.service-front,
+.service-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--border-radius);
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Service Icon */
+/* Avant */
+.service-front {
+  background: var(--bg-color);
+  z-index: 2;
+  transform: rotateY(0deg);
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+}
+
+/* Arrière = image */
+.service-back {
+  transform: rotateY(180deg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+/* Images spécifiques */
+.service-garden .service-back {
+  background-image: url('../assets/Background/garden-1680802_1280.webp');
+}
+
+.service-maintenance .service-back {
+  background-image: url('../assets/Background/garden-2179095_1280.webp');
+}
+
+.service-renovation .service-back {
+  background-image: url('../assets/Background/garden-3345970_1280.webp');
+}
+
+/* Icones & Texte */
 .service i {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    transition: var(--transition);
-    display: inline-block;
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
 }
 
-.service:hover i {
-    transform: scale(1.1);
-    color: var(--hover-color);
-}
-
-/* Service Title */
 .service h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    position: relative;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  position: relative;
 }
 
-.service h3::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background: var(--hover-color);
-    transition: var(--transition);
-}
-
-.service:hover h3::after {
-    width: 60px;
-}
-
-/* Service Description */
 .service p {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-    font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  font-size: 1rem;
 }
 
-/* Animations spécifiques pour AOS */
+/* AOS Animations */
 [data-aos="fade-up"] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition-property: transform, opacity;
+  opacity: 0;
+  transform: translateY(20px);
+  transition-property: transform, opacity;
 }
 
 [data-aos="fade-up"].aos-animate {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 [data-aos="fade-left"] {
-    opacity: 0;
-    transform: translateX(20px);
-    transition-property: transform, opacity;
+  opacity: 0;
+  transform: translateX(20px);
+  transition-property: transform, opacity;
 }
 
 [data-aos="fade-left"].aos-animate {
-    opacity: 1;
-    transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .service-container {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-}
-
+/* Responsive */
 @media (max-width: 768px) {
-    #services {
-        padding: 3rem 1rem;
-    }
+  #services {
+    height: auto;
+    padding: 3rem 1rem;
+  }
 
-    .service {
-        padding: 2rem 1.5rem;
-    }
+  .service {
+    height: 350px;
+  }
 
-    .service i {
-        font-size: 2.5rem;
-    }
+  .service-front,
+  .service-back {
+    padding: 2rem 1.5rem;
+  }
 
-    .service h3 {
-        font-size: 1.3rem;
-    }
-}
+  .service i {
+    font-size: 2.5rem;
+  }
 
-@media (max-width: 480px) {
-    .service-container {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-    }
-
-    .service {
-        padding: 1.8rem 1.2rem;
-    }
-
-    #services h2 {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-    }
-}
-
-/* Accessibilité - Focus Styles */
-.service:focus-within {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 3px;
-}
-
-.service i:focus,
-.service h3:focus {
-    outline: none;
+  .service h3 {
+    font-size: 1.3rem;
+  }
 }
